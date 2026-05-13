@@ -1,0 +1,129 @@
+# Agent Prompt Template (Jinja2 syntax)
+
+> 这是 Phase 4 每个 module agent 的 prompt 模板。占位符 `{{ var }}` 由 pipeline 在调用时替换。
+
+---
+
+```
+**任务**：为 {{ INDUSTRY }} 行业研究报告产出 **{{ MODULE_TITLE }}** 章节。
+
+---
+
+## 行业诊断结果（Phase 1）
+
+- **Archetype**：{{ ARCHETYPE }}
+- **成熟度**：{{ MATURITY }}
+- **核心矛盾**：{{ CORE_TENSION }}
+- **SHARPEST 分析师视角的关键问题**：
+{{ SHARP_QUESTIONS }}
+
+---
+
+## 信息源策略（Phase 3，本模块相关部分）
+
+{{ SOURCES_FOR_THIS_MODULE }}
+
+---
+
+## 本模块要回答的核心问题
+
+{{ MODULE_CORE_QUESTIONS }}
+
+---
+
+## 期望产出
+
+{{ MODULE_EXPECTED_OUTPUT }}
+
+---
+
+## 主要 pitfalls
+
+{{ MODULE_PITFALLS }}
+
+---
+
+## 通用纪律（Methodology/05_pitfalls.md + 06_style_guide.md）
+
+**信息源**：
+- 每个数字必须 ≥ 1 个 URL 引用
+- 不可追溯时明确标 `[UNSOURCED]` / `[INFERRED]` / `[UNDISCLOSED]`
+- 核心论点的数字 ≥ 2 个独立源交叉验证
+- 优先 Tier 1 源（监管 / 公司 IR / 头部研究机构 / arXiv），其次 Tier 2（主流券商 / Bloomberg / Reuters / 财新 / 第一财经）
+
+**措辞**：
+- 软化强判断：必然 → 大概率；稳态 → 当前格局；全链垄断 → 主导；世代级机会 → 历史级量级机会
+- 概率给定改为区间：不写"40%"，写"30-50%（依赖 X 变量）"
+- 时间口径明示：年度 vs 累计、出货 vs 装机 vs 交付
+- 货币换算明示：¥120 亿（约 $16.7B）
+
+**数学**：
+- 定价公式当场算两次（如 RaaS $25/h × 8h × 250d = $50K，不是 $360K）
+- 收入预测 vs TAM 检验：单家公司不能占 TAM > 60-70%
+- DCF 输入逐步验算
+
+**禁忌**：
+- ❌ 元叙事（"应用 X skill 模板""debate-critic agent"）—— 不出现在交付内容里
+- ❌ 自审与勘误章节
+- ❌ PE deal-level 工具（IC memo / Q&A 标准答案 / 决策树 / 组合配置）——这些不进 module 内容
+- ❌ 凭训练记忆编造数字 / 引用
+
+**引用反方声音**：
+- 至少 2-3 条反共识 / 批评者 / 同行竞品 thought leadership 的观点
+- 这是报告专业度的标志
+
+---
+
+## 输出
+
+- 写入：`sections/{{ MODULE_ID }}.md`
+- 字数：4000-8000 字
+- 在 reply 中给：
+  - 摘要 ≤ 800 字
+  - 10 条关键发现 / 数字 / 引语
+  - 任何遇到的 [UNSOURCED] / 无法解决的 gap
+
+---
+
+预计 25-40 min 完成。请用 WebSearch / WebFetch 大量验证。
+```
+
+---
+
+## 渲染示例（具身智能行业的 player_paths 模块）
+
+```
+**任务**：为 具身智能（人形机器人）行业研究报告产出 **玩家路径分化** 章节。
+
+## 行业诊断结果（Phase 1）
+- Archetype：Pre-PMF Tech + Manufacturing
+- 成熟度：Pre-PMF / Early Growth
+- 核心矛盾：技术拐点（VLA）+ 商业化悬崖的双重张力
+- SHARPEST 问题：
+  - Tesla Optimus 100 万台是否兑现？
+  - 1X NEO 60-70% autonomy 如何 scale 到 95%？
+  - 中国出货 90% 是 ROI 驱动还是补贴？
+  - 真实 MTBF / uptime 是多少？
+  - "中 vs 美" 还是"软件 vs 硬件"是真正分歧？
+
+## 信息源策略
+- 创业者 X：Brett Adcock、Bernt Bornich、王兴兴、彭志辉、王鹤
+- 投资人 thesis：a16z American Dynamism、Sequoia AI Ascent
+- 播客：Lex Fridman / Dwarkesh / Sequoia Training Data
+- 公司 IR / 招股书：宇树（2026.3.20 受理）
+
+## 本模块要回答
+- 行业有几种本质上不同的玩法？
+- 每条 path 的核心 moat / 单位经济 / 失败模式？
+- 不是"中 vs 美"二分，是"打法"分
+
+## 期望产出
+- 4-7 条 player paths
+- 每条 path：核心假设 / 单位经济 / 退出路径 / 失败概率 / 代表公司
+- 6 path 对照矩阵
+
+## 主要 pitfalls
+不要写成"中 vs 美"二分。真实分歧在打法层面。
+
+[... 通用纪律 ...]
+```
