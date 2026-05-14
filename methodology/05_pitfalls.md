@@ -230,6 +230,53 @@ Phase 1 诊断要明确写出本行业的核心矛盾。
 
 ---
 
+## ⚠️ 13. 引语 attribution 必须 web-verify · Critic 也会犯错
+
+来自 R1 F4 + R3 F2 双向教训（critic 自己一次错一次对）：
+
+**R1 F4** · Critic 说 "Oliver Hsu" 是虚构的（a16z 找不到此人）→ **Critic 错了**，Oliver Hsu 是真实 a16z partner，文章在 a16z.news/p/the-physical-ai-deployment-gap
+
+**R3 F2** · Critic 说 "Humanoids are most hyped" 这句话不是 Casado 说的，是 Polovets 说的 → **Critic 对了**，web 验证确认 Polovets 是嘉宾，Casado 是主持人
+
+**操作纪律**：
+- 每个引语 attribution 必须 web verify 一次（不是只验证 quote 内容，还要验证 speaker）
+- Critic 找到的 attribution 错误也要 web verify（critic 可能错也可能对）
+- 引语模板：`<speaker, role, affiliation> 在 <publication, date> 说："<quote>"` + URL
+- Multi-speaker 场景（播客 / 圆桌 / 对谈）必须明确"是谁在那一句话上说的"
+
+**典型错误**：把 podcast guest 的发言归于 podcast host，把官方机构博客的 author 名字搞错——这些是引语 attribution 的 P0 bug。
+
+---
+
+## ⚠️ 14. Critic 循环的"修订效率衰减"
+
+来自 embodied_ai_2026 三轮 critic 实测：
+
+| Round | 找到 issues | 一轮内 resolved | Resolved 率 |
+|---|---|---|---|
+| R1 | 14 (4F+10S) | 12 fully + 2 partial | 86% |
+| R2 | 11 (3F+8S) | 7 fully + 4 partial | 64% |
+| R3 | 5 (2F+3S) | 5 inline (no critic verify) | n/a |
+| **3 轮累计** | **30 issues** | **~24 resolved** | **~80%** |
+
+**发现**：
+- R1 resolved 率最高（修主战场效果好）
+- R2 大量 partial：作者修了主要文本，但**联动数字 / 图表 JS / 不同章节引用未同步**
+- R3 又找到 R1+R2 漏过的 fresh-eye issue（如 attribution 错）
+
+**纪律**：
+- 不要假设"一轮修干净"——partial 修复是常态
+- 修订必须**逐行联动**：修一个数字，grep 所有同名 / 同义引用一起改
+- 关键数字（TAM / PSR / DCF / 概率）建立"single source of truth"变量，正文统一引用
+- R1 → R2 之间应该跑"数字咬合自检"（pitfall #12），不要直接进 R2
+- Max rounds 3 协议下，R3 末 critic 仍可能找到 fatal——这是常态，可以承认 known limitations 交付，不必无限循环
+
+**对 industry-report skill 的隐含改进**：
+- 在 Phase 5 Adversarial review 后加 **Phase 5.5 · Number reconciliation**：跑 grep 把 critic 找到的数字在全报告所有引用位置找出来，一并修
+- 避免"修了主表没修解读 / 修了文字没修 chart JS / 修了主报告没修 IC Memo 残留"
+
+---
+
 ## ⚠️ 11. 章节编号必须前后一致
 
 来自 v3 → v4 重排教训：
