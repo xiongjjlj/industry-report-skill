@@ -355,7 +355,7 @@
       </div>
 
       <div class="chart-container">
-        <div class="chart-title">三种情景概率分布与 2030 全球出货预测</div>
+        <div class="chart-title">三种情景概率分布与 2030 累计保有量预测（万台 installed base）</div>
         <div class="grid md:grid-cols-2 gap-4">
           <div style="height: 280px;"><canvas id="chartScenarioProb"></canvas></div>
           <div style="height: 280px;"><canvas id="chartScenarioShipment"></canvas></div>
@@ -447,7 +447,7 @@
     </div>
 
     <h2>1.2 顶尖人物观点矩阵 — 5 维度 × 10 人</h2>
-    <p class="text-sm text-gray-600 mb-3">基于 2024.10 - 2026.05 顶尖创业者、学者、投资人公开发言（X / 播客 / 访谈 / 官方 blog）。每条均带出处链接（见 <a href="RESEARCH_top_voices.md" class="text-blue-600 underline">RESEARCH_top_voices.md</a>）。</p>
+    <p class="text-sm text-gray-600 mb-3">基于 2024.10 - 2026.05 选定 10 位代表创业者、学者、投资人的公开发言（X / 播客 / 访谈 / 官方 blog）。<strong>这是非随机抽样</strong>——我们选择了影响力大且公开输出多的人物；矩阵反映"样本内观察"，不能 generalize 到全行业（每条均带出处链接，见 <a href="RESEARCH_top_voices.md" class="text-blue-600 underline">RESEARCH_top_voices.md</a>）。</p>
 
     <div class="overflow-x-auto">
     <table class="pro text-sm">
@@ -479,7 +479,7 @@
     <div class="warning-box mt-6">
       <strong>矩阵的 3 个隐藏共识</strong>：
       <ol class="text-sm mt-2 mb-0">
-        <li>① <strong>"Tesla 会赢" 这一列没有任何一线 player 投支持票</strong>——这是业内最显著的"隐而不宣"共识。Adcock 公开说 Figure 比 OpenAI 强；Skild/PI 走 brain 路线绕过特斯拉硬件；中国阵营走低成本供应链；Boston Dynamics 绑定现代汽车。</li>
+        <li>① <strong>"Tesla 会赢" 这一列在我们 10 人样本中未观察到明确支持</strong>（不等于"业内无人押注 Tesla"——可能存在样本外公开发言或私下押注）。可观察到的 8 条样本内信号：Adcock 公开说 Figure 比 OpenAI 强；Skild/PI 走 brain 路线绕过特斯拉硬件优势；中国阵营走低成本供应链；Boston Dynamics 绑定现代汽车（不是 Tesla）。</li>
         <li>② "时间表激进 + 全乐观"的只有 <strong>Brett Adcock</strong>——这是 Figure $39B 估值的双刃剑。</li>
         <li>③ "必须双足"上唯一公开反对的是 <strong>Marc Raibert</strong>（Boston Dynamics 创始人）："让一个东西像人不是两条腿两只手一个头，是它的智能。"</li>
       </ol>
@@ -682,7 +682,7 @@
         <tr><th>公司 / 型号</th><th>部署点</th><th>真实 Autonomy</th><th>真实运行数据</th><th>关键披露 / 争议</th></tr>
       </thead>
       <tbody>
-        <tr style="background:#fee2e2;"><td><strong>Tesla Optimus</strong></td><td>Fremont (R&D)，无客户站点</td><td><strong>L0–L1</strong></td><td><strong>"零有效工作"</strong>——Musk Q4 2025 财报亲口承认</td><td>"It's not in usage in our factories in a material way. It's more so that the robot can learn." 直接打脸"2025 部署 10,000 台"的早前指引</td></tr>
+        <tr style="background:#fee2e2;"><td><strong>Tesla Optimus</strong></td><td>Fremont (R&D)，无客户站点</td><td><strong>L0–L1</strong></td><td><strong>R&D 阶段，无规模化部署</strong>——Musk 在 Q4 2025 财报电话中表示 Optimus 在工厂内 <em>"not in usage in our factories in a material way"</em>；媒体解读为 "no useful work"</td><td>"It's not in usage in our factories in a material way. It's more so that the robot can learn." 直接打脸"2025 部署 10,000 台"的早前指引</td></tr>
         <tr><td><strong>Figure 02</strong></td><td>BMW Spartanburg</td><td>Figure 声称 <strong>L3 in-task ODD</strong>（钣金插入），但争议</td><td><strong>1,250 累计运行小时</strong> / 90,000+ 件钣金 / 参与 30,000+ 辆 X3</td><td>Adcock 公开承诺"will not teleop in market"；但工程师 Scott Walter 等指 Shawn Ryan Show 演示有遥操作征兆；Fortune 4/2025 报道 BMW 反驳 Adcock 夸大</td></tr>
         <tr><td><strong>Figure 03</strong></td><td>BMW Spartanburg → Munich/Regensburg/Leipzig 分阶段</td><td>声称 L3；独立验证 <strong>[UNDISCLOSED]</strong></td><td>2026-27 分阶段铺开</td><td>"binary credibility event"——任何未来发现 teleop 都将打击 Figure $39B 估值</td></tr>
         <tr style="background:#fef3c7;"><td><strong>1X NEO</strong></td><td>消费者 pre-order（家庭）</td><td><strong>L0-L2 混合（官方）</strong></td><td>CEO Bornich 公开承认：初始自主率 <strong>60-70%</strong>；2027 目标 80-90%；2028 目标 95%+</td><td>"Expert Mode" 远程操作员补缺口；"running towards a cliff if autonomy doesn't scale"——CEO 自己说</td></tr>
@@ -735,7 +735,7 @@
         <tr style="background:#dcfce7;"><td>8</td><td>Agility × GXO / Mercado Libre</td><td>[UNDISCLOSED] / 100K+ 货箱</td><td><span class="tag tag-strong">B (GXO Agility Arc 订阅)</span> + C</td><td><strong>迄今最经实测的人形商业 datapoint</strong></td></tr>
         <tr style="background:#fee2e2;"><td>9</td><td>Galbot × Baida / CATL / Bosch / Toyota 累计</td><td>"plan to deploy 1,000+"</td><td><span class="tag tag-weak">C / E</span></td><td>战略部署协议，<strong>未公开单价 × 数量 × 交付表</strong>；"数千台累计订单"是公关语言</td></tr>
         <tr><td>10</td><td>Figure × BMW</td><td>未披露 / 11 月 PoC 已完</td><td><span class="tag tag-mid">B (Spartanburg 分阶段) + C (德国框架)</span></td><td>Fortune 报道 BMW 反驳 Adcock 夸大；数量 / 金额 [UNDISCLOSED]</td></tr>
-        <tr style="background:#9ca3af;color:white;"><td>—</td><td>Tesla 自厂 1,000 台</td><td>n/a</td><td><strong>剔除——不是订单</strong></td><td>Musk Q4 2025: "not in usage in a material way"</td></tr>
+        <tr style="background:#9ca3af;color:white;"><td>—</td><td>Tesla 自厂 1,000 台</td><td>n/a</td><td><strong>剔除——不是订单</strong></td><td>Musk Q4 2025 电话：<em>"not in usage in our factories in a material way"</em></td></tr>
       </tbody>
     </table>
     </div>
@@ -796,7 +796,7 @@
         <strong>RaaS 模式的真实经济</strong>
         <ul class="text-sm mt-2">
           <li>Agility 公开口径：$30/hr ($10-12/hr opex)</li>
-          <li>Figure 公开口径：~$1,000/月 RaaS（即 $12K/年/台）</li>
+          <li>Figure RaaS 定价：<strong>~$1,000/月 [INFERRED]</strong>（行业估算；Figure 官方 BMW 部署页仅披露 1,250 小时运行 / 90,000+ 件 / 30,000+ 辆 X3，<strong>未官方披露价格</strong>）</li>
           <li>Digit 单台 $250K capex → naive payback ~8 年（远不如 AMR &lt; 6 月）</li>
           <li>RaaS 需要 OEM 前置大量 capex + 维修队伍 + 残值假设 + 信用风险</li>
         </ul>
@@ -817,7 +817,95 @@
       <strong>核心问题</strong>：Figure / Apptronik / Agility 的 RaaS 估值故事都建立在"capex-light"假设上，但没有任何公司公开 RaaS 资产负债表细节。<strong>这是 PE DD 阶段第一个必须 audit 的项目</strong>。
     </div>
 
-    <h2>3.6 本章 PE 关键 takeaway</h2>
+    <h2>3.6 投资结论变更表（v1 → v3）— 把"修错"升级为"投资判断升级"</h2>
+    <p class="text-sm text-gray-600 mb-3">v1 报告完成后经第三方评审 + DD agent + adversarial critic，发现多处错误。下表把每处修订映射为对投资动作的实际影响——这才是 IC 真正关心的"修了什么 + 改不改投资动作"。</p>
+
+    <div class="overflow-x-auto">
+    <table class="pro text-sm">
+      <thead>
+        <tr>
+          <th>原结论 (v1)</th>
+          <th>新证据 / 修订原因</th>
+          <th>修订后结论 (v3)</th>
+          <th>对投资动作的影响</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>RaaS 5 年累计现金流是售卖的 <strong>170×</strong>（$1.7M vs $10K）</td>
+          <td>v1 把 Figure $25/h × 8h × 250d 误算为 $360K/年；实际 ≈ $50K/年（差 7×）。重算 LTV 后 RaaS 仅 2-5× LTV:CAC</td>
+          <td>RaaS 模式相对售卖<strong>没有数量级优势</strong>；美系估值溢价不能用 RaaS LTV 解释</td>
+          <td><strong>降低 Figure / Apptronik 权重</strong>；不再依赖"RaaS 模式赢"作为估值锚</td>
+        </tr>
+        <tr>
+          <td>2030 全球出货 <strong>150-300 万台</strong>，TAM <strong>$300-800 亿</strong></td>
+          <td>第三方评审指出混淆"年度新增"vs"累计保有量"。投行共识年度新增 25-80 万 / 年</td>
+          <td>2030 <strong>年度新增 25-80 万台 / 累计保有量 150-300 万台</strong>；年度 TAM <strong>$120-150 亿</strong></td>
+          <td>所有整机估值锚<strong>下移 2-4×</strong>；Figure / 智元 / 宇树 DCF 全部重算</td>
+        </tr>
+        <tr>
+          <td>仓储是"人形最先 PMF" 场景；BMW × Figure / GXO × Agility 验证可行</td>
+          <td>DD agent 发现：Symbotic FY2025 营收 $2.25B / Walmart 40% 交付成本下降 / Locus 17K AMR &lt;6 月回本。人形仓储 8 年回本，差 16×</td>
+          <td>仓储战争<strong>已被非人形赢得</strong>；人形不是仓储首选；定位应为"少数非结构化任务补位"，不是替代 AMR</td>
+          <td><strong>把"工业通用替代"叙事降级</strong>；重新审视 Agility / Apptronik 在 RaaS 经济中的真实竞争位置</td>
+        </tr>
+        <tr>
+          <td>Tesla 2025 部署 1,000 台 Optimus = 量产前奏</td>
+          <td>Musk Q4 2025 财报电话原话："not in usage in our factories in a material way"</td>
+          <td>Tesla 2025 实际<strong>未规模化使用</strong>，1,000 台是 R&D / 学习用途；100 万台 2026.7-8 目标存在 12-24 月延期风险</td>
+          <td>US-led 情景概率<strong>从 25% 降至 15-25%</strong>；Bifurcation 概率 40% → 40-50%；Tesla 失败对 Figure / Apptronik 双刃</td>
+        </tr>
+        <tr>
+          <td>1X NEO 进入消费市场 = 真自主家用机器人</td>
+          <td>CEO Bornich 公开承认初始自主率 <strong>60-70%</strong>，"Expert Mode" 远程操作员补缺口；目标 2028 达 95%+</td>
+          <td>1X NEO 当前是<strong>"远程操作员 + AI 混合"产品</strong>，不是真自主；估值依赖 2028 自主率兑现</td>
+          <td>1X 投资<strong>是 binary 押注 2028 自主率突破</strong>；建议仓位 ≤ 5% 组合</td>
+        </tr>
+        <tr>
+          <td>中国移动 1.24 亿"全球最大单笔订单"（智元 + 宇树）</td>
+          <td>DD agent 发现：合同实质是<strong>"人形机器人代工服务采购"用于 R&D 数据采集</strong>，不是生产部署</td>
+          <td>降级为 <strong>Tier D PoC</strong>；不可作为"工业商业化"信号</td>
+          <td>智元 / 宇树估值不应 price in 此订单为"产业兑现"；中系订单 Tier A-E 重新审计</td>
+        </tr>
+        <tr>
+          <td>中国 550 亿+ 补贴<strong>已超 EV 早期占 GDP 比例</strong></td>
+          <td>第三方评审指出算术错：年化承诺 / 年 GDP ≈ 0.04%，而非 0.07%；EV 早期高峰 ~0.05%</td>
+          <td>中国补贴<strong>接近 EV 早期同量级</strong>，但产业链复杂度高 5×；2027-2028 大概率头部洗牌</td>
+          <td>补贴叙事重要性下调；不应作为"中国必赢"的核心论据</td>
+        </tr>
+        <tr>
+          <td>金力永磁 / 中研股份是 <strong>Tesla Optimus 独家供应商</strong></td>
+          <td>第三方核实：公司单方披露"供应商"身份，Tesla 从未公开确认排他性</td>
+          <td>表述统一为<strong>"公司披露已成为 Tesla 供应商，未获 Tesla 公开确认独家"</strong></td>
+          <td>这两家上游公司仍有窗口期溢价（3-5 年），但"独家锁定"不是估值假设；下行有 Tesla 二供风险</td>
+        </tr>
+        <tr>
+          <td>Figure $39B 估值合理（按 RaaS 100 万台 × $1K/月 = $1.2B ARR × 33×）</td>
+          <td>RaaS 资产负债表：100 万台部署需 capex $10-13B；Figure 未公开 capex-light off-balance financing</td>
+          <td>Figure $39B 隐含<strong>未公开确认的 capex-light 资产负债表假设</strong>；按骨架 DCF 仅 $2.85B</td>
+          <td>美系一线<strong>系统性泡沫</strong>风险；建议 2027 后估值回调时再加仓</td>
+        </tr>
+        <tr>
+          <td>humanoid IRA 推出概率 40%</td>
+          <td>第三方评审：单点概率拍脑袋，仅基于 ITIF 单篇白皮书</td>
+          <td>降级为 <strong>policy watchlist 项</strong>；推出与否高度依赖 Optimus 兑现度，作为情景触发条件而非给定概率</td>
+          <td>不依赖单点政策预测做组合配置；改为变量驱动表跟踪</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="insight-box mt-4">
+      <strong>变更的元 takeaway</strong>：
+      <ul class="text-sm mt-2 mb-0">
+        <li>① 10 处修订中 <strong>7 处指向"美系估值下行风险"</strong>（RaaS / Tesla / Figure DCF / 1X 自主率 / 仓储替代 / 资产负债表）</li>
+        <li>② 中系修订相对中性（口径错位、独家声明软化、补贴叙事降级），但<strong>板块估值锚整体下移 2-4×</strong></li>
+        <li>③ 没有一处修订让原结论"更乐观"——这印证 v1 整体偏 narrative-driven 而非 DD-driven</li>
+        <li>④ <strong>核心架构（5 层产业链、技术拐点、6 玩家路径）仍立得住</strong>——v3 只是把估值锚 / 商业化兑现 / 政策概率拉回 DD 现实</li>
+      </ul>
+    </div>
+
+    <h2>3.7 本章 PE 关键 takeaway</h2>
     <ol class="text-sm space-y-1 mt-3">
       <li>① 人形机器人当前商业化<strong>远未跑通</strong>——Musk 亲自承认 Optimus "无实质使用"，1X 60-70% 自主率，Figure 与 BMW 关系被 Fortune 质疑</li>
       <li>② 媒体宣传的 "$3B 订单" 中 <strong>Tier A 几乎为零</strong>；Tier B 集中在中国政府采购（数据采集 / 安防 / 教育，非 ROI 驱动）</li>
@@ -966,7 +1054,7 @@
 <!-- 1.0 基础原材料层 -->
 <section id="ch1-0" class="section-anchor py-12 px-8">
   <div class="max-w-7xl mx-auto">
-    <h2>1.0 基础原材料层 · 储量-开采-加工三段式</h2>
+    <h2>5.0 基础原材料层 · 储量-开采-加工三段式</h2>
     <p>具身智能的基础原材料层包括 <strong>稀土永磁（钕铁硼）+ 铜 + 镁/铝/特种钢 + PEEK + 碳纤维 + 铍铜</strong>。与 EV"电池占 40%"强单点结构不同，人形机器人 BOM 更分散，但 <span class="highlight-key">稀土、铜、PEEK、碳纤维、镁五类全部中国主导</span>。</p>
 
     <div class="grid md:grid-cols-3 gap-4 my-6">
@@ -1044,7 +1132,7 @@
 <!-- 1.1 产业链全景 -->
 <section id="ch1-1" class="section-anchor py-12 px-8 bg-gray-50">
   <div class="max-w-7xl mx-auto">
-    <h2>1.1 产业链全景概览（5 层结构）</h2>
+    <h2>5.1 产业链全景概览（5 层结构）</h2>
 
     <div class="data-card">
       <div class="mermaid">
@@ -1118,7 +1206,7 @@ graph TB
 <!-- 1.2 上游硬件 -->
 <section id="ch1-2" class="section-anchor py-12 px-8">
   <div class="max-w-7xl mx-auto">
-    <h2>1.2 上游硬件 · 十大零部件市场格局</h2>
+    <h2>5.2 上游硬件 · 十大零部件市场格局</h2>
     <p>完整版（含每个零部件全球与中国 CR3、ASP、玩家清单、客户绑定关系、单台用量）见 <a class="text-blue-600 underline" href="sections/02_upstream_hardware.md">02_upstream_hardware.md</a>（14,500 字）。</p>
 
     <div class="chart-container">
@@ -1187,7 +1275,7 @@ graph TB
 <!-- 1.3 中游 AI -->
 <section id="ch1-3" class="section-anchor py-12 px-8 bg-gray-50">
   <div class="max-w-7xl mx-auto">
-    <h2>1.3 中游 AI · 模型 / 仿真 / 数据 / 算力</h2>
+    <h2>5.3 中游 AI · 模型 / 仿真 / 数据 / 算力</h2>
     <p>完整版见 <a class="text-blue-600 underline" href="sections/03_midstream_ai.md">03_midstream_ai.md</a>。</p>
 
     <div class="grid md:grid-cols-4 gap-4 my-6">
@@ -1266,7 +1354,7 @@ graph TB
 <!-- 1.4 下游整机 -->
 <section id="ch1-4" class="section-anchor py-12 px-8">
   <div class="max-w-7xl mx-auto">
-    <h2>1.4 下游整机 · 44 家厂商全景</h2>
+    <h2>5.4 下游整机 · 44 家厂商全景</h2>
     <p>完整版（含每家公司创始人 / 融资 / 投资方 / 估值 / 订单 / 客户 / 量产规划）见 <a class="text-blue-600 underline" href="sections/04_downstream_oems.md">04_downstream_oems.md</a>（477 行 / 44 家公司）。</p>
 
     <div class="chart-container">
@@ -1297,7 +1385,7 @@ graph TB
 <!-- 1.5 市场规模 -->
 <section id="ch1-5" class="section-anchor py-12 px-8 bg-gray-50">
   <div class="max-w-7xl mx-auto">
-    <h2>1.5 市场规模与应用场景商业化</h2>
+    <h2>5.5 市场规模与应用场景商业化</h2>
     <p>完整版（含 14 家投行预测对比表、20 家整机售价矩阵、25+ 客户案例）见 <a class="text-blue-600 underline" href="sections/01_market.md">01_market.md</a>。</p>
 
     <div class="chart-container">
@@ -1348,7 +1436,7 @@ graph TB
       <div style="height: 320px; max-width: 600px; margin: 0 auto;"><canvas id="chartCNUseCase"></canvas></div>
     </div>
 
-    <h3>1.5.6 单台 ROI 经济模型：客户视角的"购买 / 租赁 vs 雇佣"决策</h3>
+    <h3>5.5.6 单台 ROI 经济模型：客户视角的"购买 / 租赁 vs 雇佣"决策</h3>
     <p class="text-sm text-gray-600 mb-3">PE 投资人最关心的不是"产能多少"，而是"客户为什么会买"。下表测算单台人形机器人替代 1 个三班制岗位的回本周期。</p>
 
     <div class="overflow-x-auto">
@@ -1399,7 +1487,7 @@ graph TB
 <!-- 1.6 投资项目 -->
 <section id="ch1-6" class="section-anchor py-12 px-8">
   <div class="max-w-7xl mx-auto">
-    <h2>1.6 2024-2026 全球投资项目清单（Top 20）</h2>
+    <h2>5.6 2024-2026 全球投资项目清单（Top 20）</h2>
     <p>模仿 Reference 弘毅"IRA 颁布后全球电池/EV 厂商投资动向"风格。完整 40+ 项见 <a class="text-blue-600 underline" href="sections/06_round2_supplement.md">06_round2_supplement.md</a>。</p>
 
     <div class="overflow-x-auto">
@@ -1444,7 +1532,7 @@ graph TB
 <!-- 2.1 中美能力矩阵 -->
 <section id="ch2-1" class="section-anchor py-12 px-8">
   <div class="max-w-7xl mx-auto">
-    <h2>2.1 中美产业链能力对比矩阵</h2>
+    <h2>6.1 中美产业链能力对比矩阵</h2>
 
     <div class="chart-container">
       <div class="chart-title">中美产业链 16 环节能力对比（1-5 星）</div>
@@ -1481,7 +1569,7 @@ graph TB
 <!-- 2.2 双维度不可能三角 -->
 <section id="ch2-2" class="section-anchor py-12 px-8 bg-gray-50">
   <div class="max-w-7xl mx-auto">
-    <h2>2.2 双维度"不可能三角"</h2>
+    <h2>6.2 双维度"不可能三角"</h2>
     <p>类比 Reference 弘毅在电池产业链做的"国家安全 × 环境保护 × 经济效益"框架，具身智能因软件层而增加技术视角，形成双维度三角。</p>
 
     <div class="grid md:grid-cols-2 gap-6 my-8">
@@ -1556,7 +1644,7 @@ graph TB
 <!-- 2.3 三情景推演 -->
 <section id="ch2-3" class="section-anchor py-12 px-8">
   <div class="max-w-7xl mx-auto">
-    <h2>2.3 三种未来情景推演</h2>
+    <h2>6.3 三种未来情景推演</h2>
 
     <div class="grid md:grid-cols-3 gap-4">
       <div class="scenario-card cn">
@@ -1568,7 +1656,7 @@ graph TB
         <p class="text-sm font-medium mb-3">中国凭借硬件成本与场景密度赢得全球生产中心</p>
         <div class="text-xs space-y-2">
           <div><strong>触发条件</strong>：中国 2027 ramp 量产 + 美国无 humanoid IRA</div>
-          <div><strong>2030 出货</strong>：中 250 万 / 美 30 万 / 其他 20 万</div>
+          <div><strong>2030 累计保有量 (installed base)</strong>：中 250 万 / 美 30 万 / 其他 20 万；<em>年度新增 ~40-60 万台/年</em></div>
           <div><strong>2030 ASP</strong>：$10K（中）/ $35K（美）</div>
           <div><strong>主要受益</strong>：中系全产业链 + 海外硬件依赖中国</div>
           <div><strong>最大风险</strong>：本土洗牌过度</div>
@@ -1584,7 +1672,7 @@ graph TB
         <p class="text-sm font-medium mb-3">humanoid IRA + Tesla/Figure 兑现 $20K 反向倾销</p>
         <div class="text-xs space-y-2">
           <div><strong>触发条件</strong>：Tesla 100 万兑现 + humanoid IRA 推出</div>
-          <div><strong>2030 出货</strong>：中 80 万 / 美 200 万 / 其他 20 万</div>
+          <div><strong>2030 累计保有量 (installed base)</strong>：中 80 万 / 美 200 万 / 其他 20 万；<em>年度新增 ~50-70 万台/年</em></div>
           <div><strong>2030 ASP</strong>：$20K（双方收敛）</div>
           <div><strong>主要受益</strong>：Tesla/Figure/Apptronik/Skild/π0/NVIDIA + FTA 硬件</div>
           <div><strong>最大风险</strong>：中国失去出口市场</div>
@@ -1600,7 +1688,7 @@ graph TB
         <p class="text-sm font-medium mb-3">中美三层全面脱钩，BOM 重合度 &lt; 30%</p>
         <div class="text-xs space-y-2">
           <div><strong>触发条件</strong>：双方均推动本土化但未完全脱离</div>
-          <div><strong>2030 出货</strong>：中 180 万 / 美 100 万 / 其他 20 万</div>
+          <div><strong>2030 累计保有量 (installed base)</strong>：中 180 万 / 美 100 万 / 其他 20 万；<em>年度新增 ~45-65 万台/年</em></div>
           <div><strong>2030 ASP</strong>：$12K（中）/ $40K（美）</div>
           <div><strong>主要受益</strong>：各国"双轨"领导者；NVIDIA + CATL + 稀土玩家双赢</div>
           <div><strong>最大风险</strong>：全球效率损失，2030 难破 $25K</div>
@@ -1610,7 +1698,7 @@ graph TB
     </div>
 
     <div class="chart-container mt-8">
-      <div class="chart-title">三情景下 2030 全球出货量预测对比（万台）</div>
+      <div class="chart-title">三情景下 2030 累计保有量预测对比（万台 installed base）</div>
       <div style="height: 360px;"><canvas id="chartScenarioCompare"></canvas></div>
     </div>
   </div>
@@ -1619,7 +1707,7 @@ graph TB
 <!-- 2.4 政策 -->
 <section id="ch2-4" class="section-anchor py-12 px-8 bg-gray-50">
   <div class="max-w-7xl mx-auto">
-    <h2>2.4 政策环境 + 中国 550 亿+ 补贴省级分布</h2>
+    <h2>6.4 政策环境 + 中国 550 亿+ 补贴省级分布</h2>
 
     <div class="grid md:grid-cols-2 gap-6">
       <div class="data-card">
@@ -1659,7 +1747,7 @@ graph TB
 <!-- 2.5 投资判断框架 -->
 <section id="ch2-5" class="section-anchor py-12 px-8">
   <div class="max-w-7xl mx-auto">
-    <h2>2.5 投资判断框架 + 估值方法论</h2>
+    <h2>6.5 投资判断框架 + 估值方法论</h2>
 
     <h3>31 条 PE Checklist · 4 大维度</h3>
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -1738,7 +1826,7 @@ graph TB
       2020 EV 整车 PSR 中位 <strong>8×</strong>，2021 蔚来/小鹏达 <strong>15-20×</strong>，2023 回调至 1-3×。<strong>2025 美系一线人形 PSR 195-780×</strong>（按 2025 营收），<strong>2027-2028 预计回调 50-70%</strong>。
     </div>
 
-    <h3>2.5.X · 完整估值测算（DCF on 2030 命中产能）：Figure / 智元 / 宇树三家对照</h3>
+    <h3>6.5.1 · 完整估值测算（DCF on 2030 命中产能）：Figure / 智元 / 宇树三家对照</h3>
     <p class="text-sm text-gray-600 mb-3">在 Bifurcation 基准情景下，对三家头部整机厂做"2030 命中产能 × ASP × 毛利率 × WACC 折现"测算，对比当前估值是否合理。</p>
 
     <div class="overflow-x-auto">
@@ -1777,15 +1865,15 @@ graph TB
     <div class="grid md:grid-cols-3 gap-4 mt-4">
       <div class="warning-box" style="margin:0;">
         <strong>Figure AI 解读</strong>
-        <p class="text-xs mt-1 mb-0">DCF 锚定 $15.4B vs 市场 $39.5B → <strong>+157% 溢价</strong>。差距来自市场 price in 100 万台兑现 + $50K ASP + 50% 毛利的"完美场景"。如果 Tesla 兑现 $20K 反向倾销，Figure ASP 假设可能从 $25K 降到 $15K，DCF 进一步缩水 40%。<strong>下行风险大于上行</strong>。</p>
+        <p class="text-xs mt-1 mb-0">DCF 锚定 <strong>$2.85B</strong> vs 市场 $39.5B → <strong>+1287% 溢价（约 14×）</strong>。差距巨大反映市场 price in 的不是骨架 DCF 现金流，而是"AI 大脑 + 软件 + 数据飞轮"等非财务因子。如果 Tesla 兑现 $20K 反向倾销，Figure 收入假设需进一步下修。<strong>下行风险大于上行；修订后溢价比 v1 更扎实</strong>。</p>
       </div>
       <div class="warning-box" style="margin:0;">
         <strong>智元 AgiBot 解读</strong>
-        <p class="text-xs mt-1 mb-0">DCF 仅 $0.46B vs 当前 $2.8B → <strong>+509% 溢价</strong>。这是中系最大溢价。修正路径：① 提高 2030 出货假设至 50 万（PE 共识 30 万）；② 提高毛利率到 35%；③ 加入 AgiBot World 数据资产估值（~$200M-500M）；④ 软件/SaaS 收入流。修正后 DCF 可达 $1.2-1.8B，仍 +56% 溢价。<strong>港股 IPO 估值若稳在 $4B+ 需要业绩兑现</strong>。</p>
+        <p class="text-xs mt-1 mb-0">DCF 仅 <strong>$0.22B</strong> vs 当前 $2.8B → <strong>+1173% 溢价（约 13×）</strong>。骨架 DCF 远低于市场反映"中国具身 IPO 流动性溢价 + 国资背书 + AgiBot World 数据资产"的非财务因子。即便加入软件/数据资产估值（保守 $300M）+ 提高出货假设至 50 万，修订 DCF 仍仅 $1.2-1.8B，<strong>港股 IPO 估值若稳在 $4B+ 需要 2027-2028 业绩兑现验证</strong>。</p>
       </div>
       <div class="success-box" style="margin:0;">
         <strong>宇树科技解读</strong>
-        <p class="text-xs mt-1 mb-0">DCF $1.25B vs IPO 锚定 $5.6B → +348% 溢价但<strong>相对最合理</strong>。① 实际毛利 60%（招股书）远高于假设 35%，DCF 可修正至 $2.5B；② R1 $5,900 极致价格 + 海外 30% 出口已是稀缺现金流模型；③ 一旦 IPO 流动性溢价加上 → ¥400 亿（$5.6B）在合理区间偏上。<strong>三家中最值得跟投</strong>。</p>
+        <p class="text-xs mt-1 mb-0">DCF <strong>$0.58B</strong> vs IPO 锚定 $5.6B → <strong>+866% 溢价（约 10×）</strong>，但相对最合理。① 实际毛利 60%（招股书，含机器狗）远高于假设 35%，按真实毛利重算 DCF 可达 $1.5-2B；② R1 $5,900 极致价格 + 海外 30% 出口已是稀缺现金流模型；③ 加入 IPO 流动性溢价 + 品牌溢价后 → ¥400 亿（$5.6B）处于合理区间偏上。<strong>三家中相对最稳健；跟投上限 ¥250 亿（$3.5B）作为安全锚</strong>。</p>
       </div>
     </div>
 
@@ -1797,7 +1885,7 @@ graph TB
       <strong>方法论说明</strong>：本测算是 base case 三选一情景下的"骨架"，未含：①软件 / 模型授权收入流；②数据资产价值；③战略并购退出溢价；④可比上市公司估值锚（Symbotic、ABB、KUKA）；⑤管理团队溢价。完整模型见 <code>data/valuation_model.xlsx</code>（待 xlsx skill 生成）。
     </div>
 
-    <h3>2.5.Y · Comps-Analysis · 可比公司估值倍数 Quartile 对照表</h3>
+    <h3>6.5.2 · Comps-Analysis · 可比公司估值倍数 Quartile 对照表</h3>
     <p class="text-sm text-gray-600 mb-3">将 3 家具身一线 vs 3 类可比板块的 EV/Revenue 倍数对照，定位"是否处于历史 / 同业合理区间"。</p>
 
     <div class="overflow-x-auto">
@@ -1834,7 +1922,7 @@ graph TB
       </ul>
     </div>
 
-    <h3>2.5.Z · Unit Economics · 三种商业模式对比（含资产负债表口径）</h3>
+    <h3>6.5.3 · Unit Economics · 三种商业模式对比（含资产负债表口径）</h3>
     <p class="text-sm text-gray-600 mb-3">PE 投资人的核心问题不是"卖多少台"，是"每台机器人在不同模式下的现金流 + 资产负债表负担"。下表按真实公开口径重做（修正了 v1 中 RaaS 单台年收入算术错误）。</p>
 
     <div class="overflow-x-auto">
@@ -1849,7 +1937,7 @@ graph TB
         </tr>
       </thead>
       <tbody>
-        <tr><td>定价 / 模式</td><td><strong>$25/h × 8h × 250d = $50K/年/台</strong>（Figure 公开口径）</td><td>~$30K-50K/年/台 [INFERRED]（Agility 未公开实际租金）</td><td>一次性 $30-130K</td><td>$20K 硬件 + $499/月 订阅 = $26K (5y)</td></tr>
+        <tr><td>定价 / 模式</td><td><strong>$25/h × 8h × 250d = $50K/年/台 [INFERRED]</strong>（行业估算；Figure 官方仅披露运行小时和件数，<strong>未官方披露价格</strong>）</td><td>~$30K-50K/年/台 [INFERRED]（Agility 未公开实际租金）</td><td>一次性 $30-130K</td><td>$20K 硬件 + $499/月 订阅 = $26K (5y)</td></tr>
         <tr><td>合约期 LTV (5 年)</td><td>$200-250K [INFERRED]</td><td>$150-250K [INFERRED]</td><td>$30-130K（一次性 + 少量售后）</td><td>$26K</td></tr>
         <tr><td>估算 CAC (per 台)</td><td>$50-100K [INFERRED]（销售周期 9-12 月）</td><td>$50-100K [INFERRED]</td><td>$3K（电商 / B2B 渠道）</td><td>$5K（DTC）</td></tr>
         <tr><td><strong>LTV : CAC</strong></td><td>2-5×</td><td>2-5×</td><td>10-40×</td><td>~5×</td></tr>
@@ -1862,7 +1950,7 @@ graph TB
     </div>
 
     <div class="warning-box">
-      <strong>修订说明</strong>：v1 把 RaaS 年收入估算为 $360K/年（$30K/月 × 12）是错的——Figure 公开口径是 $25/h × 8h × 250d ≈ $50K/年，<strong>差 7×</strong>。修订后 RaaS LTV $200-250K（不是 v1 的 $1.8M），LTV:CAC 仅 2-5×（不是 9×），消除了 v1 "RaaS 5 年累计现金流是售卖的 170×"的错误结论。
+      <strong>修订说明</strong>：v1 把 RaaS 年收入估算为 $360K/年（$30K/月 × 12）是错的——行业估算 Figure RaaS 约 $25/h × 8h × 250d ≈ $50K/年（<strong>注：Figure 未官方披露价格</strong>，仅披露 BMW 1,250 运行小时 / 90,000+ 件），<strong>差 7×</strong>。修订后 RaaS LTV $200-250K（不是 v1 的 $1.8M），LTV:CAC 仅 2-5×（不是 9×），消除了 v1 "RaaS 5 年累计现金流是售卖的 170×"的错误结论。
     </div>
 
     <div class="insight-box">
@@ -1880,7 +1968,7 @@ graph TB
 <!-- 2.6 Q1-Q2 事件年表 -->
 <section id="ch2-6" class="section-anchor py-12 px-8 bg-gray-50">
   <div class="max-w-7xl mx-auto">
-    <h2>2.6 2026 Q1-Q2 关键事件年表</h2>
+    <h2>6.6 2026 Q1-Q2 关键事件年表</h2>
 
     <div class="relative pl-8">
       <div class="absolute left-3 top-2 bottom-2 w-0.5 bg-gray-300"></div>
@@ -1967,7 +2055,7 @@ graph TB
 <!-- 3.1 综合判断 -->
 <section id="ch3-1" class="section-anchor py-12 px-8">
   <div class="max-w-7xl mx-auto">
-    <h2>3.1 综合判断三段论</h2>
+    <h2>A.1 综合判断三段论</h2>
     <div class="grid md:grid-cols-3 gap-4">
       <div class="data-card" style="border-top:4px solid var(--blue);">
         <div class="text-xs font-semibold text-gray-500 mb-2">CURRENT 现状</div>
@@ -2004,7 +2092,7 @@ graph TB
 <!-- 3.2 优先级矩阵 -->
 <section id="ch3-2" class="section-anchor py-12 px-8 bg-gray-50">
   <div class="max-w-7xl mx-auto">
-    <h2>3.2 PE 投资优先级矩阵</h2>
+    <h2>A.2 PE 投资优先级矩阵</h2>
 
     <div class="overflow-x-auto">
     <table class="pro text-sm">
@@ -2032,7 +2120,7 @@ graph TB
 <!-- 3.3 组合配置 + 决策树 -->
 <section id="ch3-3" class="section-anchor py-12 px-8">
   <div class="max-w-7xl mx-auto">
-    <h2>3.3 PE 组合配置建议 + 决策树</h2>
+    <h2>A.3 PE 组合配置建议 + 决策树</h2>
 
     <h3>三种基金类型的目标组合</h3>
     <div class="grid md:grid-cols-3 gap-4">
@@ -2111,7 +2199,7 @@ graph TD
 <!-- 3.4 投委会必问 -->
 <section id="ch3-4" class="section-anchor py-12 px-8 bg-gray-50">
   <div class="max-w-7xl mx-auto">
-    <h2>3.4 投委会必问 · 10 个问题 + 标准答案</h2>
+    <h2>A.4 投委会必问 · 10 个问题 + 标准答案</h2>
     <p class="text-sm text-gray-600 mb-3">PE 投委会真实场景下会问的 10 个 toughest 问题。每个给出"问题 + 报告中的依据 + 反方挑战 + 标准答案"。投资人对外路演时可直接引用。</p>
 
     <div class="grid md:grid-cols-1 gap-4">
@@ -2303,7 +2391,7 @@ graph TD
 <!-- 3.5 IC Memo 样本 -->
 <section id="ch3-5" class="section-anchor py-12 px-8">
   <div class="max-w-7xl mx-auto">
-    <h2>3.5 IC Memo 样本 · 智元机器人</h2>
+    <h2>A.5 IC Memo 样本 · 智元机器人</h2>
     <p class="text-sm text-gray-600 mb-3">一份"标的级"投委会备忘录样本，针对智元做完整的 thesis、estimate、risk、recommendation 收口。</p>
 
     <div class="data-card" style="border:2px solid var(--primary);background:linear-gradient(180deg, #fafafa 0%, #ffffff 30%);">
@@ -4090,13 +4178,13 @@ graph TD
         <thead><tr><th>数据点</th><th>报告引用值</th><th>置信度</th><th>主要来源</th><th>备注</th></tr></thead>
         <tbody>
           <tr><td>2025 全球出货</td><td>1.8 万台</td><td><span class="tag tag-strong">High</span></td><td>IDC、信通院、GGII 三方交叉</td><td>口径略有差异（IDC 1.8 万 / 信通院 2 万）</td></tr>
-          <tr style="background:#fef3c7;"><td>中国出货占全球</td><td>原 80-90% → <strong>修订为 95%</strong></td><td><span class="tag tag-strong">High</span></td><td><a href="#ref-REF010" class="text-blue-600">REF010</a> IDC 一手</td><td>References DB 发现报告内文偏保守，已就地修订</td></tr>
+          <tr style="background:#fef3c7;"><td>中国出货占全球</td><td><strong>80-95%（按口径区间）</strong></td><td><span class="tag tag-mid">Medium</span></td><td>IDC 一手 ~95% / GGII ~85%（口径差异）</td><td>"出货"定义在不同机构间不一致（含/不含教育/数据采集机；含/不含小尺寸）</td></tr>
           <tr style="background:#fef3c7;"><td>中美 BOM 剪刀差</td><td>原 $32K vs $130K → <strong>$46K vs $130K (MS 原文)</strong></td><td><span class="tag tag-mid">Medium</span></td><td><a href="#ref-REF008" class="text-blue-600">REF008</a> MS *Humanoid 100*</td><td>BofA $35K 为压制后口径；MS 原文 $46K 更权威，已就地修订 + 加口径警示</td></tr>
           <tr><td>Figure AI 估值</td><td>$39.5B</td><td><span class="tag tag-strong">High</span></td><td>Figure 官方 + The Information</td><td>Series C 已落定</td></tr>
           <tr><td>Skild AI $14B</td><td>$14B 在谈</td><td><span class="tag tag-mid">Medium</span></td><td>The Information 报道</td><td>未落定，"在谈"</td></tr>
           <tr><td>智元 2025 出货 5,168 台</td><td>5,168 台</td><td><span class="tag tag-mid">Medium</span></td><td>IDC 报告，华尔街见闻转引</td><td>IDC 原报告未公开下载</td></tr>
           <tr><td>三情景概率（35/25/40）</td><td>主观分布</td><td><span class="tag tag-weak">Analyst Judgment</span></td><td>报告分析师判断</td><td>非市场共识，需 reviewer 校准</td></tr>
-          <tr><td>humanoid IRA 概率 40%</td><td>主观判断</td><td><span class="tag tag-weak">Analyst Judgment</span></td><td>报告分析师判断</td><td>基于 ITIF 2025.7 报告 + 政策周期类比</td></tr>
+          <tr><td>humanoid IRA 推出</td><td><strong>Policy watchlist</strong>（不给单点概率）</td><td><span class="tag tag-weak">Watchlist Item</span></td><td>ITIF 2025.7 报告 + 政策周期</td><td>推出与否高度依赖 Optimus 兑现度等外生变量；本报告将其作为情景触发条件而非给定概率</td></tr>
           <tr><td>稀土高性能磁材 92%</td><td>92%+</td><td><span class="tag tag-strong">High</span></td><td>USGS + 中国稀土行业协会</td><td>多源一致</td></tr>
           <tr><td>中国 550 亿+ 补贴</td><td>累计承诺</td><td><span class="tag tag-mid">Medium</span></td><td>地方政府官网 + 媒体汇总</td><td>"承诺"vs"实际投放"有差距</td></tr>
           <tr><td>2030 出货预测</td><td>25-80 万台</td><td><span class="tag tag-mid">Medium</span></td><td>14 家投行预测综合</td><td>极差大，区间宽</td></tr>
@@ -4194,9 +4282,9 @@ new Chart(document.getElementById('chartScenarioShipment'), {
     responsive: true, maintainAspectRatio: false,
     plugins: {
       legend: { position: 'bottom' },
-      title: { display: true, text: '2030E 出货量（万台）' }
+      title: { display: true, text: '2030E 累计保有量（万台 installed base）' }
     },
-    scales: { x: { stacked: true }, y: { stacked: true, title: { display: true, text: '万台' } } }
+    scales: { x: { stacked: true }, y: { stacked: true, title: { display: true, text: '累计保有量（万台）' } } }
   }
 });
 
@@ -4553,7 +4641,7 @@ new Chart(document.getElementById('chartScenarioCompare'), {
   options: { responsive: true, maintainAspectRatio: false,
     plugins: { legend: { position: 'bottom' },
       tooltip: { mode: 'index', intersect: false } },
-    scales: { x: { stacked: true }, y: { stacked: true, title: { display: true, text: '2030E 出货量（万台）' } } } }
+    scales: { x: { stacked: true }, y: { stacked: true, title: { display: true, text: '2030E 累计保有量（万台 installed base）' } } } }
 });
 
 // 中国 550 亿+ 补贴
