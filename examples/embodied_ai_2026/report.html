@@ -133,9 +133,17 @@
   .chart-title { font-weight: 600; font-size: 1.05rem; color: var(--primary); margin-bottom: 8px; }
   .chart-subtitle { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; }
   h1 { font-weight: 800; }
-  h2 { font-weight: 700; color: var(--primary); margin-top: 32px; margin-bottom: 16px; font-size: 1.6rem; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
-  h3 { font-weight: 700; color: var(--secondary); margin-top: 24px; margin-bottom: 12px; font-size: 1.25rem; }
-  h4 { font-weight: 600; color: var(--secondary); margin-top: 18px; margin-bottom: 10px; font-size: 1.05rem; }
+  h2 { font-weight: 700; color: var(--primary); margin-top: 48px; margin-bottom: 20px; font-size: 1.6rem; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
+  h2:first-child, .data-card > h2:first-child, section > div > h2:first-of-type { margin-top: 0; }
+  h3 { font-weight: 700; color: var(--secondary); margin-top: 36px; margin-bottom: 14px; font-size: 1.25rem; }
+  h3:first-child, .data-card > h3:first-child { margin-top: 12px; }
+  h4 { font-weight: 600; color: var(--secondary); margin-top: 22px; margin-bottom: 12px; font-size: 1.05rem; }
+  /* 卡片内首个标题不要顶部空 */
+  .data-card h2 + p, .data-card h3 + p, h2 + p, h3 + p { margin-top: 0; }
+  /* 强制顶部无间距（替代 inline style） */
+  .\!mt-0 { margin-top: 0 !important; }
+  /* 章节之间统一间距 */
+  section.section-anchor { padding-top: 64px; padding-bottom: 64px; }
   ul { padding-left: 1.4em; }
   li { margin-bottom: 4px; }
   .highlight-num { color: var(--red); font-weight: 700; }
@@ -219,65 +227,76 @@
 <section class="bg-white py-12 px-8 border-b border-gray-200">
   <div class="max-w-7xl mx-auto">
     <h2 class="text-2xl font-bold mb-6" style="border:none;">目录 / Table of Contents</h2>
-    <div class="grid md:grid-cols-3 gap-6 toc text-sm">
+    <div class="grid md:grid-cols-2 gap-8 toc text-sm">
+      <!-- ===== 左列：核心章节 ===== -->
       <div>
-        <div class="font-semibold text-gray-900 mb-2">0. 执行摘要</div>
-        <ul class="space-y-1 text-gray-600">
+        <div class="font-semibold text-gray-900 mb-3 pb-2 border-b-2 border-orange-300">核心章节（按阅读顺序）</div>
+
+        <div class="font-semibold text-gray-900 mb-2 mt-3">0. 执行摘要</div>
+        <ul class="space-y-1 text-gray-600 mb-3">
           <li><a href="#summary-current" class="hover:text-orange-600">0.1 当前格局核心结论</a></li>
           <li><a href="#summary-future" class="hover:text-orange-600">0.2 未来格局推演结论</a></li>
           <li><a href="#summary-actions" class="hover:text-orange-600">0.3 PE 行动 5 个最值得做的决定</a></li>
         </ul>
-      </div>
-      <div>
-        <div class="font-semibold text-purple-700 mb-2">★ 第一章 · 行业本质</div>
+
+        <div class="font-semibold text-purple-700 mb-2 mt-4">★ 第一章 · 行业本质</div>
         <ul class="space-y-1 text-gray-600 mb-3">
           <li><a href="#ch-why-now" class="hover:text-orange-600">为什么是现在 + 4 拐点</a></li>
           <li><a href="#ch-why-now" class="hover:text-orange-600">顶尖人物 10×5 观点矩阵</a></li>
           <li><a href="#ch-why-now" class="hover:text-orange-600">5 条核心分歧线</a></li>
         </ul>
-        <div class="font-semibold text-blue-700 mb-2">★ 第二章 · 技术路线之争</div>
+
+        <div class="font-semibold text-blue-700 mb-2 mt-4">★ 第二章 · 技术路线之争</div>
         <ul class="space-y-1 text-gray-600 mb-3">
           <li><a href="#ch-tech-routes" class="hover:text-orange-600">VLA vs 世界模型</a></li>
           <li><a href="#ch-tech-routes" class="hover:text-orange-600">真机 vs 仿真 vs 视频</a></li>
           <li><a href="#ch-tech-routes" class="hover:text-orange-600">必须双足吗 / Scaling Law</a></li>
         </ul>
-      </div>
-      <div>
-        <div class="font-semibold text-orange-700 mb-2">★ 第三章 · 商业化悬崖（DD）</div>
+
+        <div class="font-semibold text-orange-700 mb-2 mt-4">★ 第三章 · 商业化悬崖（DD）</div>
         <ul class="space-y-1 text-gray-600 mb-3">
           <li><a href="#ch-commercial-cliff" class="hover:text-orange-600">真实 Autonomy Level 评分卡</a></li>
           <li><a href="#ch-commercial-cliff" class="hover:text-orange-600">Top 10 订单 Tier 分级</a></li>
           <li><a href="#ch-commercial-cliff" class="hover:text-orange-600">替代方案 ROI（Symbotic/Locus）</a></li>
           <li><a href="#ch-commercial-cliff" class="hover:text-orange-600">ISO 安全 + RaaS 资产负债表</a></li>
+          <li><a href="#ch-commercial-cliff" class="hover:text-orange-600">投资结论变更表 (v1→v3)</a></li>
         </ul>
-        <div class="font-semibold text-indigo-700 mb-2">★ 第四章 · 6 种玩家路径</div>
+
+        <div class="font-semibold text-indigo-700 mb-2 mt-4">★ 第四章 · 6 种玩家路径</div>
         <ul class="space-y-1 text-gray-600 mb-3">
           <li><a href="#ch-player-paths" class="hover:text-orange-600">Tesla / Figure / 1X / PI-Skild</a></li>
           <li><a href="#ch-player-paths" class="hover:text-orange-600">中国硬件派 / 中国场景派</a></li>
         </ul>
       </div>
+
+      <!-- ===== 右列：次要章节 + 附录 ===== -->
       <div>
-        <div class="font-semibold text-gray-700 mb-2">第五章 · 产业链与硬件（次要）</div>
+        <div class="font-semibold text-gray-900 mb-3 pb-2 border-b-2 border-gray-300">补充章节 · 附录</div>
+
+        <div class="font-semibold text-gray-700 mb-2 mt-3">第五章 · 产业链与硬件（补充）</div>
         <ul class="space-y-1 text-gray-600 mb-3">
-          <li><a href="#ch1-0" class="hover:text-orange-600">5.0 基础原材料层</a></li>
-          <li><a href="#ch1-2" class="hover:text-orange-600">5.2 上游硬件</a></li>
-          <li><a href="#ch1-3" class="hover:text-orange-600">5.3 中游 AI</a></li>
+          <li><a href="#ch1-0" class="hover:text-orange-600">5.0 基础原材料（BOM 表速览）</a></li>
+          <li><a href="#ch1-1" class="hover:text-orange-600">5.1 产业链全景</a></li>
+          <li><a href="#ch1-2" class="hover:text-orange-600">5.2 上游硬件十大零部件</a></li>
+          <li><a href="#ch1-3" class="hover:text-orange-600">5.3 中游 AI / 仿真 / 数据</a></li>
           <li><a href="#ch1-4" class="hover:text-orange-600">5.4 下游 44 家整机</a></li>
-          <li><a href="#ch1-5" class="hover:text-orange-600">5.5 市场规模</a></li>
+          <li><a href="#ch1-5" class="hover:text-orange-600">5.5 市场规模与应用场景</a></li>
         </ul>
-        <div class="font-semibold text-gray-700 mb-2">第六章 · 中美格局与政策</div>
+
+        <div class="font-semibold text-gray-700 mb-2 mt-4">第六章 · 中美格局与政策</div>
         <ul class="space-y-1 text-gray-600 mb-3">
-          <li><a href="#ch2-3" class="hover:text-orange-600">三情景推演</a></li>
-          <li><a href="#ch2-4" class="hover:text-orange-600">政策 + 中国 550 亿补贴</a></li>
-          <li><a href="#ch2-6" class="hover:text-orange-600">2026 Q1-Q2 事件年表</a></li>
+          <li><a href="#ch2-3" class="hover:text-orange-600">6.3 三情景推演</a></li>
+          <li><a href="#ch2-4" class="hover:text-orange-600">6.4 政策 + 中国 550 亿补贴</a></li>
+          <li><a href="#ch2-6" class="hover:text-orange-600">6.6 2026 Q1-Q2 事件年表</a></li>
         </ul>
-        <div class="font-semibold text-gray-500 mb-2">附录</div>
-        <ul class="space-y-1 text-gray-500">
+
+        <div class="font-semibold text-gray-500 mb-2 mt-4">附录</div>
+        <ul class="space-y-1 text-gray-500 mb-3">
           <li><a href="#ch3-1" class="hover:text-orange-600">A. PE 内部工具（IC Memo / Q&A / 决策树 / 组合配置）</a></li>
-          <li><a href="#references" class="hover:text-orange-600">B. 数据来源与引用追溯 (206 refs)</a></li>
+          <li><a href="#references" class="hover:text-orange-600">B. 数据来源与引用追溯（206 refs）</a></li>
         </ul>
       </div>
-    </div>
+    </div>    </div>
   </div>
 </section>
 
@@ -324,7 +343,7 @@
     </div>
 
     <div id="summary-current" class="section-anchor data-card">
-      <h2 style="margin-top:0;">0.1 当前格局核心结论</h2>
+      <h2 class="!mt-0">0.1 当前格局核心结论</h2>
       <p class="text-lg font-medium" style="color:#0b2447;">"美强软件、中强硬件" 的当前呈现非对称格局——中国主导出货（<strong>80-95%</strong>，IDC vs GGII 口径区间）+ 硬件 BOM 优势（剪刀差 2.8×），美国主导 VLA 模型 + 估值（Figure $39B、Skild $14B 在谈）。</p>
 
       <h3>市场规模</h3>
@@ -335,7 +354,7 @@
     </div>
 
     <div id="summary-future" class="section-anchor data-card">
-      <h2 style="margin-top:0;">0.2 未来格局推演核心结论</h2>
+      <h2 class="!mt-0">0.2 未来格局推演核心结论</h2>
       <div class="grid md:grid-cols-2 gap-4 my-4">
         <div class="info-box">
           <strong>双维度不可能三角</strong>
@@ -380,7 +399,7 @@
     </div>
 
     <div id="summary-actions" class="section-anchor data-card">
-      <h2 style="margin-top:0;">0.3 PE 行动 · 5 个最值得做的决定</h2>
+      <h2 class="!mt-0">0.3 PE 行动 · 5 个最值得做的决定</h2>
       <div class="grid md:grid-cols-2 gap-4">
         <div class="success-box">
           <strong>① 2026 H1 进入中系核心零部件 + 原材料卡点</strong>
@@ -935,7 +954,7 @@
     <div class="grid md:grid-cols-2 gap-4 mt-6">
 
       <div class="data-card" style="border-top:4px solid var(--blue);">
-        <h3 style="margin-top:0;color:var(--blue);">路径 ① · Tesla — 垂直整合 + 自家工厂数据飞轮</h3>
+        <h3 class="!mt-0">路径 ① · Tesla — 垂直整合 + 自家工厂数据飞轮</h3>
         <ul class="text-sm">
           <li><strong>核心假设</strong>：垂直整合 + 自家工厂数据 + 自研芯片（D1）+ 100 万台/年规模化 → $20K 一台</li>
           <li><strong>实际进度</strong>：Musk Q4 2025 财报亲口"<strong>not in usage in our factories in a material way</strong>"，2025 部署 ~1,000 台仅用于"learn"——直接打脸 10,000 台年内承诺</li>
@@ -947,7 +966,7 @@
       </div>
 
       <div class="data-card" style="border-top:4px solid var(--blue);">
-        <h3 style="margin-top:0;color:var(--blue);">路径 ② · Figure / Apptronik — 端到端 VLA + B 端 RaaS</h3>
+        <h3 class="!mt-0">路径 ② · Figure / Apptronik — 端到端 VLA + B 端 RaaS</h3>
         <ul class="text-sm">
           <li><strong>核心假设</strong>：纯软件（Helix VLA）+ B 端 RaaS（$1K/月 - $25/h）+ 头部车厂客户（BMW, Mercedes）→ 估值 5-10× of 中系</li>
           <li><strong>实际进度</strong>：Figure 11 月 BMW PoC 完成 / BotQ 工厂爬产；Apptronik Mercedes/GXO/Jabil pilot；commercial 目标 2026 H2</li>
@@ -959,7 +978,7 @@
       </div>
 
       <div class="data-card" style="border-top:4px solid var(--green);">
-        <h3 style="margin-top:0;color:var(--green);">路径 ③ · 1X — 消费级 + 远程操作员补丁</h3>
+        <h3 class="!mt-0">路径 ③ · 1X — 消费级 + 远程操作员补丁</h3>
         <ul class="text-sm">
           <li><strong>核心假设</strong>：双轨——前期靠 teleop 收集真机数据训练 autonomy；2028 真自主率 95%+</li>
           <li><strong>实际进度</strong>：NEO 2026.4 投产 Hayward / 2026 目标 1 万台家用；初始自主率 60-70% (CEO 公开)</li>
@@ -971,7 +990,7 @@
       </div>
 
       <div class="data-card" style="border-top:4px solid var(--orange);">
-        <h3 style="margin-top:0;color:var(--orange);">路径 ④ · Physical Intelligence / Skild — 纯模型层（"robot brain"）</h3>
+        <h3 class="!mt-0">路径 ④ · Physical Intelligence / Skild — 纯模型层（"robot brain"）</h3>
         <ul class="text-sm">
           <li><strong>核心假设</strong>：通用大脑模型（π0/π0.5, Skild Brain）+ 跨形态部署 → 软件公司估值 (40-100× ARR)</li>
           <li><strong>实际进度</strong>：PI π0/π0.5 完成"open-world generalization"；Skild $1.4B raise 2026.1，估值 $14B</li>
@@ -983,7 +1002,7 @@
       </div>
 
       <div class="data-card" style="border-top:4px solid var(--red);">
-        <h3 style="margin-top:0;color:var(--red);">路径 ⑤ · 中国硬件派（宇树 / 众擎 / 加速进化）— 极致硬件成本 + 走量</h3>
+        <h3 class="!mt-0">路径 ⑤ · 中国硬件派（宇树 / 众擎 / 加速进化）— 极致硬件成本 + 走量</h3>
         <ul class="text-sm">
           <li><strong>核心假设</strong>：极致 BOM 成本（$5,900 R1 / ¥99K G1）+ 走量（消费 + 教育 + 海外 30% 出口）+ 现金流盈利</li>
           <li><strong>实际进度</strong>：宇树 2025 出货 5,500 台 / 营收 ¥17 亿（全口径，机器狗为主）/ <strong>扣非净利 ¥6 亿 / 毛利 60%</strong>——唯一公开盈利的人形玩家</li>
@@ -995,7 +1014,7 @@
       </div>
 
       <div class="data-card" style="border-top:4px solid var(--red);">
-        <h3 style="margin-top:0;color:var(--red);">路径 ⑥ · 中国场景派（智元 / 银河通用 / 优必选）— 政府订单 + 数据采集 + 仿真</h3>
+        <h3 class="!mt-0">路径 ⑥ · 中国场景派（智元 / 银河通用 / 优必选）— 政府订单 + 数据采集 + 仿真</h3>
         <ul class="text-sm">
           <li><strong>核心假设</strong>：国资背书 + 政府订单 + 数据采集合同 + 仿真合成数据（GraspVLA 10 亿帧）→ "中国弯道超车"</li>
           <li><strong>实际进度</strong>：智元 2025 出货 5,168 台（IDC）/ AgiBot World 100 万+ 开源；银河通用 2026.3 大基金三期 ¥25 亿首投；UBTech 2025 订单 ¥11-13 亿（政府采购 + 安防 + 数据采集）</li>
@@ -1054,77 +1073,42 @@
 <!-- 1.0 基础原材料层 -->
 <section id="ch1-0" class="section-anchor py-12 px-8">
   <div class="max-w-7xl mx-auto">
-    <h2>5.0 基础原材料层 · 储量-开采-加工三段式</h2>
-    <p>具身智能的基础原材料层包括 <strong>稀土永磁（钕铁硼）+ 铜 + 镁/铝/特种钢 + PEEK + 碳纤维 + 铍铜</strong>。与 EV"电池占 40%"强单点结构不同，人形机器人 BOM 更分散，但 <span class="highlight-key">稀土、铜、PEEK、碳纤维、镁五类全部中国主导</span>。</p>
+    <h2>5.0 基础原材料 · BOM 视角下的一张表</h2>
+    <p class="text-sm text-gray-600 mb-4">说明：上游材料对 PE 投资逻辑影响有限——它影响 BOM 成本和毛利，但不决定整机厂能否赢。本节<strong>仅作 BOM 拆解 + 战略地缘点提示</strong>，不作为核心章节。投资优先级建议见第四章玩家路径、附录 A.2。</p>
 
-    <div class="grid md:grid-cols-3 gap-4 my-6">
-      <div class="chart-container">
-        <div class="chart-title">稀土储量 · 中国 48.9%</div>
-        <div style="height: 240px;"><canvas id="chartRareEarthReserve"></canvas></div>
-      </div>
-      <div class="chart-container">
-        <div class="chart-title">稀土开采 · 中国 69%</div>
-        <div style="height: 240px;"><canvas id="chartRareEarthMining"></canvas></div>
-      </div>
-      <div class="chart-container">
-        <div class="chart-title">高性能磁材产能 · 中国 92%+</div>
-        <div style="height: 240px;"><canvas id="chartRareEarthMagnet"></canvas></div>
-      </div>
-    </div>
-
-    <h3>表 1-0-1 · 关键基础原材料"储量—开采—加工"中国地位</h3>
-    <div class="overflow-x-auto">
-    <table class="pro">
-      <thead>
-        <tr><th>原材料</th><th>全球储量分布</th><th>开采</th><th>加工 / 高性能产能</th><th>中国占比</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>稀土（钕铁硼）</strong></td><td>中国 4,400 万吨 (<strong>48.9%</strong>)、巴西 2,100、印度 690、澳 570</td><td>中国 27 万吨 (<strong>69%</strong>)、缅甸 ~3.8 万 (中资)、美 MP 4.5 万、Lynas 1.1 万</td><td>冶炼分离 <strong>~90%</strong>；高性能磁材产能 <strong>92%+</strong></td><td><span class="tag tag-cn">主导（高份额）</span></td></tr>
-        <tr><td><strong>铜</strong></td><td>智利 19.4%、澳/秘 各 10%、俄 8%、中国 4%</td><td>智利 23%、刚果 14%、秘鲁、中国 ~7%</td><td>中国精炼 1,200 万吨 (<strong>45%</strong>)</td><td><span class="tag tag-cn">精炼主导</span></td></tr>
-        <tr><td><strong>镁</strong></td><td>中国 ~22%</td><td>中国 86 万吨</td><td>中国原镁 <strong>全球 87%</strong></td><td><span class="tag tag-cn">绝对主导</span></td></tr>
-        <tr><td><strong>铝（电解）</strong></td><td>多元</td><td>多元</td><td>中国 4,500 万吨 (<strong>58%</strong>)</td><td><span class="tag tag-cn">主导</span></td></tr>
-        <tr><td><strong>PEEK</strong></td><td>—</td><td>—</td><td>威格斯 40% + Solvay/Evonik 等海外 60%；<strong>中研股份国内 30.6% / 全球第 4</strong></td><td><span class="tag tag-mid">国产突破中</span></td></tr>
-        <tr><td><strong>碳纤维（T800+）</strong></td><td>—</td><td>—</td><td>东丽 35% + 东邦 15% + 三菱 10%；<strong>中复神鹰 全球第 3 / 2.85 万吨/年</strong></td><td><span class="tag tag-mid">25%</span></td></tr>
-        <tr><td><strong>铍铜</strong></td><td>美国 70%（Materion）</td><td>美</td><td>美国</td><td><span class="tag tag-us">美国主导，中国卡脖子</span></td></tr>
-      </tbody>
-    </table>
-    </div>
-
-    <div class="warning-box mt-6">
-      <strong>战略洞察</strong>：原材料层仅占 BOM 2.5%（远低于 EV 的 ~25%），账面价值不大；但稀土/铜/PEEK/碳纤维/镁五类<strong>中国主导</strong>，构成中国对美国"反制工具箱"——2024.12 中国对稀土、镁、镓出口管制即把卡脖子从"芯片"延伸到"具身智能"的根本逻辑。
-    </div>
-
-    <h3>表 1-0-2 · 单台 BOM 原材料层成本拆解</h3>
+    <h3>单台 BOM · 原材料层成本拆解（占整机 ~2.5%）</h3>
     <div class="grid md:grid-cols-2 gap-6">
       <div class="overflow-x-auto">
         <table class="pro">
-          <thead><tr><th>原材料</th><th>单台用量</th><th>单价</th><th>单台成本（元）</th><th>占 BOM</th></tr></thead>
+          <thead><tr><th>原材料</th><th>单台用量</th><th>单台成本</th><th>占 BOM</th><th>中国地位</th></tr></thead>
           <tbody>
-            <tr><td>钕铁硼磁材</td><td>3 kg (Optimus 3.5)</td><td>600 元/kg</td><td>1,800</td><td>0.5%</td></tr>
-            <tr><td>铜</td><td>8.2 kg</td><td>75 元/kg</td><td>600</td><td>0.2%</td></tr>
-            <tr><td>镁合金</td><td>10 kg</td><td>25 元/kg</td><td>250</td><td>0.1%</td></tr>
-            <tr><td>铝合金</td><td>10 kg</td><td>22 元/kg</td><td>220</td><td>0.07%</td></tr>
-            <tr><td>特种钢</td><td>6 kg</td><td>30 元/kg</td><td>180</td><td>0.06%</td></tr>
-            <tr><td>PEEK</td><td>7 kg</td><td>100 元/kg</td><td>700</td><td>0.2%</td></tr>
-            <tr><td>碳纤维</td><td>5 kg</td><td>800 元/kg</td><td>4,000</td><td>1.3%</td></tr>
-            <tr><td>铍铜</td><td>0.08 kg</td><td>600 元/kg</td><td>50</td><td>0.02%</td></tr>
-            <tr style="background:#fef3c7;font-weight:600;"><td>原材料层小计</td><td>—</td><td>—</td><td><strong>~7,800</strong></td><td><strong>~2.5%</strong></td></tr>
+            <tr><td>钕铁硼磁材</td><td>3 kg</td><td>1,800 元</td><td>0.5%</td><td>磁材 92%+</td></tr>
+            <tr><td>铜（绕组 + 线缆）</td><td>8.2 kg</td><td>600 元</td><td>0.2%</td><td>精炼 45%</td></tr>
+            <tr><td>镁/铝/钢（结构件）</td><td>26 kg</td><td>650 元</td><td>0.23%</td><td>原镁 87%、电解铝 58%</td></tr>
+            <tr><td>PEEK</td><td>7 kg</td><td>700 元</td><td>0.2%</td><td>中研 30.6% / 全球第 4</td></tr>
+            <tr><td>碳纤维 T800+</td><td>5 kg</td><td>4,000 元</td><td>1.3%</td><td>中复神鹰 全球第 3</td></tr>
+            <tr style="background:#fee2e2;"><td>铍铜（卡脖子）</td><td>0.08 kg</td><td>50 元</td><td>0.02%</td><td>美 Materion 70% 主导</td></tr>
+            <tr style="background:#fef3c7;font-weight:600;"><td>合计</td><td>—</td><td><strong>~7,800 元</strong></td><td><strong>~2.5%</strong></td><td>—</td></tr>
           </tbody>
         </table>
       </div>
       <div class="chart-container">
-        <div class="chart-title">单台原材料层成本结构</div>
+        <div class="chart-title">单台原材料成本结构</div>
         <div style="height: 320px;"><canvas id="chartRawMaterialCost"></canvas></div>
       </div>
     </div>
 
-    <h3>关键玩家清单（按 2025 销量 / 产能）</h3>
-    <div class="grid md:grid-cols-2 gap-3 text-sm">
-      <div class="data-card" style="margin-bottom:0;padding:16px;"><strong>钕铁硼磁材</strong><br/>中科三环 2.2 万吨、<span class="highlight-num">金力永磁 2.0 万吨（<em>公司披露已成为特斯拉 Optimus 供应商，未经特斯拉公开确认"独家"</em>）</span>、正海磁材 1.5 万吨（宝马/采埃孚）、宁波韵升 1.3 万吨、北方稀土</div>
-      <div class="data-card" style="margin-bottom:0;padding:16px;"><strong>铜</strong><br/>紫金矿业、江西铜业、铜陵有色、云南铜业；铜杆/铜线 金田铜业（人形专项产线）、海亮股份、楚江新材</div>
-      <div class="data-card" style="margin-bottom:0;padding:16px;"><strong>镁合金</strong><br/>宝武镁业（埃斯顿合作首款镁合金机器人）、云海金属、万丰奥威</div>
-      <div class="data-card" style="margin-bottom:0;padding:16px;"><strong>PEEK</strong><br/><span class="highlight-num">中研股份 688716</span>（公司披露已成为特斯拉 Optimus PEEK 树脂供应商，未获 Tesla 公开确认"独家"）、沃特股份、君正集团、鹏孚隆</div>
-      <div class="data-card md:col-span-2" style="margin-bottom:0;padding:16px;"><strong>碳纤维</strong><br/><span class="highlight-num">中复神鹰（全球第三 / 2.85 万吨）</span>、光威复材、中简科技、吉林化纤</div>
+    <div class="info-box mt-4">
+      <strong>唯一值得 PE 关注的战略点</strong>：上游材料对 PE 投资逻辑不重要（占 BOM 仅 2.5% / 没有 Tesla/Figure 因买不到钕铁硼卡住的案例），但<strong>稀土地缘集中度 92%+</strong> 是中美博弈的"反制工具箱"——2024.12 中国对稀土/镁/镓出口管制把卡脖子从"芯片"延伸到"具身智能"。这是<strong>主题观察项</strong>，不是核心配置项。
+    </div>
+
+    <div class="warning-box mt-4">
+      <strong>PE 视角处理原则（参考第三方评审）</strong>：
+      <ol class="text-sm mt-2 mb-0">
+        <li>① 上游材料目前<strong>不是产业瓶颈</strong>，也没到"瓶颈叙事"——真正瓶颈在高精度行星滚柱丝杠 / 谐波减速器 / 无框力矩电机 + 六维力传感器 + VLA 模型与数据</li>
+        <li>② PEEK / 碳纤维 / 铍铜这些"概念材料"在二级市场叙事很热，但一级市场 PE 尽调要冷处理——A 股"机器人材料概念股"涨得很凶，但单机价值量、渗透节奏、能否锁定份额都不确定</li>
+        <li>③ 因此本节<strong>仅一张 BOM 表带过</strong>，不作为重要章节。具体玩家清单（中科三环 / 金力永磁 / 中复神鹰 / 中研股份等）已收录在附录 A.2 投资优先级矩阵</li>
+      </ol>
     </div>
   </div>
 </section>
@@ -1574,7 +1558,7 @@ graph TB
 
     <div class="grid md:grid-cols-2 gap-6 my-8">
       <div class="triangle-box">
-        <h3 style="margin-top:0;">维度 A · PE 视角</h3>
+        <h3 class="!mt-0">维度 A · PE 视角</h3>
         <p class="text-sm text-gray-600 mb-2">"国家安全 × 技术领先 × 经济效益"</p>
         <svg viewBox="0 0 440 360" class="w-full mt-2" preserveAspectRatio="xMidYMid meet">
           <!-- 三角形 -->
@@ -1598,7 +1582,7 @@ graph TB
         </svg>
       </div>
       <div class="triangle-box">
-        <h3 style="margin-top:0;">维度 B · 技术视角</h3>
+        <h3 class="!mt-0">维度 B · 技术视角</h3>
         <p class="text-sm text-gray-600 mb-2">"数据规模 × 泛化能力 × 商业化成本"</p>
         <svg viewBox="0 0 440 360" class="w-full mt-2" preserveAspectRatio="xMidYMid meet">
           <polygon points="220,40 60,310 380,310" fill="#dbeafe" stroke="#1e40af" stroke-width="2.5"/>
@@ -1652,7 +1636,7 @@ graph TB
           <span class="tag tag-cn">情景 1</span>
           <span class="text-3xl font-bold" style="color:var(--red);">35%</span>
         </div>
-        <h3 style="margin-top:0;color:var(--red);">China-led</h3>
+        <h3 class="!mt-0">China-led</h3>
         <p class="text-sm font-medium mb-3">中国凭借硬件成本与场景密度赢得全球生产中心</p>
         <div class="text-xs space-y-2">
           <div><strong>触发条件</strong>：中国 2027 ramp 量产 + 美国无 humanoid IRA</div>
@@ -1668,7 +1652,7 @@ graph TB
           <span class="tag tag-us">情景 2</span>
           <span class="text-3xl font-bold" style="color:var(--blue);">25%</span>
         </div>
-        <h3 style="margin-top:0;color:var(--blue);">US-led</h3>
+        <h3 class="!mt-0">US-led</h3>
         <p class="text-sm font-medium mb-3">humanoid IRA + Tesla/Figure 兑现 $20K 反向倾销</p>
         <div class="text-xs space-y-2">
           <div><strong>触发条件</strong>：Tesla 100 万兑现 + humanoid IRA 推出</div>
@@ -1684,7 +1668,7 @@ graph TB
           <span class="tag" style="background:#92400e;color:white;">基准情景</span>
           <span class="text-3xl font-bold" style="color:#92400e;">40%</span>
         </div>
-        <h3 style="margin-top:0;color:#92400e;">Bifurcation 双轨平行</h3>
+        <h3 class="!mt-0">Bifurcation 双轨平行</h3>
         <p class="text-sm font-medium mb-3">中美三层全面脱钩，BOM 重合度 &lt; 30%</p>
         <div class="text-xs space-y-2">
           <div><strong>触发条件</strong>：双方均推动本土化但未完全脱离</div>
@@ -1711,7 +1695,7 @@ graph TB
 
     <div class="grid md:grid-cols-2 gap-6">
       <div class="data-card">
-        <h3 style="margin-top:0;color:var(--blue);">🇺🇸 美国</h3>
+        <h3 class="!mt-0">🇺🇸 美国</h3>
         <ul class="text-sm space-y-2">
           <li>• 2025.1 Trump EO 14179 取代 Biden 14110</li>
           <li>• 2025.5 撤销 AI Diffusion Rule</li>
@@ -1721,7 +1705,7 @@ graph TB
         </ul>
       </div>
       <div class="data-card">
-        <h3 style="margin-top:0;color:var(--red);">🇨🇳 中国</h3>
+        <h3 class="!mt-0">🇨🇳 中国</h3>
         <ul class="text-sm space-y-2">
           <li>• 工信部 2023.11《人形机器人创新发展指导意见》</li>
           <li>• 2024 工信部具身智能标委会（2026.4 正式成立）</li>
@@ -2059,7 +2043,7 @@ graph TB
     <div class="grid md:grid-cols-3 gap-4">
       <div class="data-card" style="border-top:4px solid var(--blue);">
         <div class="text-xs font-semibold text-gray-500 mb-2">CURRENT 现状</div>
-        <h3 style="margin-top:0;">非对称稳态格局</h3>
+        <h3 class="!mt-0">非对称稳态格局</h3>
         <p class="text-sm">中国主导出货（80-95% 按口径）+ 硬件 BOM 优势（2.8× 价差），美国主导模型 + 估值。</p>
         <p class="text-sm font-medium mt-3">双向卡脖子已成型：</p>
         <ul class="text-sm">
@@ -2069,7 +2053,7 @@ graph TB
       </div>
       <div class="data-card" style="border-top:4px solid var(--orange);">
         <div class="text-xs font-semibold text-gray-500 mb-2">2027-2028 · 关键验证窗口</div>
-        <h3 style="margin-top:0;">5 个关键变量</h3>
+        <h3 class="!mt-0">5 个关键变量</h3>
         <ol class="text-sm space-y-1">
           <li>Tesla Optimus 100 万台/$20K 是否兑现？</li>
           <li>中系头部 IPO 是否兑现，单台经济性是否打通？</li>
@@ -2080,7 +2064,7 @@ graph TB
       </div>
       <div class="data-card" style="border-top:4px solid var(--green);">
         <div class="text-xs font-semibold text-gray-500 mb-2">2030-2050 · 长期视角</div>
-        <h3 style="margin-top:0;">世代级机会</h3>
+        <h3 class="!mt-0">世代级机会</h3>
         <p class="text-sm">全球累计保有量 <strong>150-300 万台</strong>（2030）→ <strong>5-8 亿台</strong>（2050，含累计部署）。</p>
         <p class="text-sm">年度 TAM <strong>$120-150 亿</strong>（2030 年度市场）→ <strong>$5-7 万亿</strong>（2050 累计市场含 RaaS LTV）。</p>
         <p class="text-sm mt-3 font-medium text-green-700">蓝领劳动力替代是与 EV / 光伏 / AI 同等量级的历史级机会（前提：技术拐点真正到来）。</p>
@@ -2480,7 +2464,7 @@ graph TD
     <p class="text-gray-700 mb-6">本报告所有数据均可追溯至公开来源。引用按可信度分为三层（Tier 1/2/3），每个核心数据点对应至少一条引用，关键数字交叉验证 2 条以上独立来源。</p>
 
     <div id="references-summary" class="data-card">
-      <h3 style="margin-top:0;">引用统计</h3>
+      <h3 class="!mt-0">引用统计</h3>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="kpi-card"><div class="kpi-value" id="ref-count-total">206</div><div class="kpi-label">总引用数</div></div>
         <div class="kpi-card"><div class="kpi-value" id="ref-count-tier1">81 <span class="text-base font-normal">(39%)</span></div><div class="kpi-label">Tier 1 一手 / 权威机构</div></div>
@@ -2495,7 +2479,7 @@ graph TD
     </div>
 
     <div id="references-list" class="data-card">
-      <h3 style="margin-top:0;">完整引用列表</h3>
+      <h3 class="!mt-0">完整引用列表</h3>
       <p class="text-sm text-gray-600 mb-4">点击 [REF-NNN] 即可在浏览器新标签打开来源。完整结构化数据见 <code>data/references.json</code>、<code>data/data_points.json</code>、<code>data/companies.json</code>。</p>
       <div id="references-content" class="text-sm">
         <p class="text-sm text-gray-600 mb-4">完整 206 条引用按 Tier 分组展开。点击任意链接在新标签打开来源。完整 JSON 数据见 <code>data/references.json</code>。</p>
@@ -4172,7 +4156,7 @@ graph TD
     </div>
 
     <div class="data-card">
-      <h3 style="margin-top:0;">⚠️ 已知数据置信度说明</h3>
+      <h3 class="!mt-0">⚠️ 已知数据置信度说明</h3>
       <p class="text-sm text-gray-700">为满足 PE 投资机构对外交付的可追溯性要求，对核心数据点的置信度作如下声明：</p>
       <table class="pro text-sm mt-3">
         <thead><tr><th>数据点</th><th>报告引用值</th><th>置信度</th><th>主要来源</th><th>备注</th></tr></thead>
@@ -4289,51 +4273,6 @@ new Chart(document.getElementById('chartScenarioShipment'), {
 });
 
 // 稀土储量
-new Chart(document.getElementById('chartRareEarthReserve'), {
-  type: 'pie',
-  data: {
-    labels: ['中国', '巴西', '印度', '澳大利亚', '其他'],
-    datasets: [{
-      data: [48.9, 23.3, 7.7, 6.3, 13.8],
-      backgroundColor: [palette.cn, '#16a34a', '#f59e0b', '#7c3aed', palette.other],
-      borderWidth: 2, borderColor: '#fff'
-    }]
-  },
-  options: { responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } },
-      tooltip: { callbacks: { label: (ctx) => ctx.label + ': ' + ctx.parsed + '%' } } } }
-});
-
-new Chart(document.getElementById('chartRareEarthMining'), {
-  type: 'pie',
-  data: {
-    labels: ['中国', '缅甸（中资）', '美国 MP', 'Lynas（澳）', '其他'],
-    datasets: [{
-      data: [69, 9.7, 11.5, 2.8, 7],
-      backgroundColor: [palette.cn, '#fbbf24', palette.us, '#7c3aed', palette.other],
-      borderWidth: 2, borderColor: '#fff'
-    }]
-  },
-  options: { responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } },
-      tooltip: { callbacks: { label: (ctx) => ctx.label + ': ' + ctx.parsed + '%' } } } }
-});
-
-new Chart(document.getElementById('chartRareEarthMagnet'), {
-  type: 'pie',
-  data: {
-    labels: ['中国', '日本（信越/TDK）', '德国（VAC）', '其他'],
-    datasets: [{
-      data: [92, 5, 2, 1],
-      backgroundColor: [palette.cn, '#7c3aed', '#f59e0b', palette.other],
-      borderWidth: 2, borderColor: '#fff'
-    }]
-  },
-  options: { responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } },
-      tooltip: { callbacks: { label: (ctx) => ctx.label + ': ' + ctx.parsed + '%' } } } }
-});
-
 // 原材料成本拆解
 new Chart(document.getElementById('chartRawMaterialCost'), {
   type: 'bar',
