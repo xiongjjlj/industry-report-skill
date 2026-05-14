@@ -292,3 +292,157 @@ Phase 1 诊断要明确写出本行业的核心矛盾。
 - 不要混用：不能"第五章"配 "1.0 / 1.1"，要么改成"5.0 / 5.1"，要么把"第五章"改成"第一章"
 
 **操作纪律**：重排后 grep `<h2>` 看所有标题编号是否连贯；TOC 锚点是否还对得上。
+
+---
+
+## ⚠️ 15. HTML 结构完整性：禁用正则破坏性改写，div balance 必跑
+
+来自 embodied_ai_2026 v6 layout-bug 教训（用户反馈："你现在已经把格式跑乱了"，配截图：summary 区出现 0.2 / 0.3 单字换行）：
+
+**反例**（真实事故）：
+- v6 自动审计脚本里写了 `html = re.sub(r'  +', ' ', html)`，意图压缩多余空白，但 **HTML 里的多空格在 `<pre>` / 属性串 / inline-block 排版中是有意义的**
+- 同一次改写漏掉一个 `</div>`（line 332 kpi-label 未闭合），并多写一个 `</div>` （line 303 TOC 区），结果整个文档 grid 容器闭合错位
+- 浏览器没报错，但 grid 退化导致 `grid-cols-2` 变成超窄列，文字逐字换行 → 用户截图里看到的 "0./.2/./3/x" 单字流
+
+**为什么致命**：
+- HTML 静默崩塌——浏览器不会抛错，靠肉眼很难发现
+- 单字换行的视觉信号 = grid / flex 容器宽度异常 = 99% 是上游 `<div>` 未闭合或多闭合
+- 用户在大屏看效果，单字换行立刻被注意到，但模型本地的 markdown / 文本预览看不出
+
+**正解 · 结构性改 HTML 的纪律**：
+1. **永远不要用 `re.sub` 改 HTML 结构**——空白压缩、属性重写、标签替换都禁用正则
+   - 要改用 BeautifulSoup / lxml / html5lib 解析后操作 DOM
+   - 唯一可以用正则的：注释 (`<!-- ... -->`) 或注释里的纯文本片段
+2. **每次保存 HTML 后强制跑 div balance check**：
+   ```python
+   from html.parser import HTMLParser
+   class Counter(HTMLParser):
+       def __init__(self): super().__init__(); self.opens=0; self.closes=0
+       def handle_starttag(self, tag, _): 
+           if tag=='div': self.opens+=1
+       def handle_endtag(self, tag):
+           if tag=='div': self.closes+=1
+   c = Counter(); c.feed(open('report.html').read())
+   assert c.opens == c.closes, f"DIV MISMATCH: {c.opens} open vs {c.closes} close"
+   ```
+3. **section 级别 balance**：把每个 `<section>` 单独喂进 parser，验证每段内部 self-contained
+4. **修复后用 Playwright 取多个 section 截图**，肉眼对比 grid 列宽是否正常
+
+**用户信号识别**（critical）：
+- 截图里看到 "0./.2/./3" 单字独占一行 → grid 容器破损，**最优先排查 `</div>` 平衡**
+- 不要去调 CSS / 字号 / flex-wrap——那是症状，根因 99% 在 HTML 闭合
+
+---
+
+## ⚠️ 16. 用户重金投入的 HTML 资产不要轻易转 PPT
+
+来自 embodied_ai_2026 PPT 实验教训（用户反馈三连："图太少了"→"和 html 完全不一样"→"不希望你做 ppt 了"）：
+
+**反例**：用户在 HTML 报告里投入 25+ Chart.js 图表 + Mermaid 流程图 + 多列 grid 排版。我接到"做 PPT"指令后另起炉灶用 python-pptx 写了 76 页稀疏 PPT（一页内容拆成几页讲），完全丢掉 HTML 的视觉资产。
+
+**为什么错**：
+- 用户的"做 PPT" ≠ "从零开始写 PPT"
+- 默认意图是："把 HTML 报告的信息密度和图表带到 PPT 里"
+- 重做 PPT 等于把几个小时的 HTML 设计劳动全部作废
+
+**正解 · PPT 转换决策树**：
+
+接到"做 PPT"指令时，先问三个问题：
+
+| 问题 | 答案 → 路径 |
+|---|---|
+| 已经有 HTML 报告吗？ | 有 → 走"HTML 转 PPT"路径，不要重做 |
+| HTML 里有图表 / mermaid / 排版资产吗？ | 有 → 必须保留，最低限度截图嵌入 PPT |
+| 用户给了页数限制吗？ | 没说 → 默认 25-40 页（不是 70+ 页稀疏稿） |
+
+**HTML → PPT 的两种正解**：
+
+1. **截图嵌入路线**（保真度高，编辑性低）
+   - Playwright 把每个 section 渲染为 PNG → 整页或多张拼贴塞 PPT
+   - 适合：用户只看不改，重视视觉一致性
+   - 缺点：PPT 里图不能再编辑，文本不可选
+
+2. **重建路线**（编辑性高，工作量大）
+   - HTML 里的 Chart.js 数据 → 提取为 pptx native chart
+   - HTML 里的表格 → pptx table
+   - 配色 / 字体 / 间距严格沿用 HTML 的设计语言
+   - 适合：用户要在 PPT 里改数字 / 配合内部模板
+   - 必须：每页信息密度 ≥ HTML 同等 section，不允许"一页拆成几页"
+
+**PPT 密度规则**（来自用户反馈"图太少 / 一页拆几页"）：
+- 每页 ≥ 1 个可视元素（图 / 表 / 图标矩阵），纯文字页禁出
+- 标题 + 3-5 个支撑论点 / 数据点 + 1 个图——这是"密"的基线
+- 把 HTML 一个 section 的全部信息塞 1-2 页 PPT，不是 5-8 页
+
+---
+
+## ⚠️ 17. Playwright 渲染 CDN-heavy HTML：用 `load` 不用 `networkidle`
+
+来自 embodied_ai_2026 截图验证教训：
+
+**反例**：写截图脚本默认 `await page.goto(url, wait_until="networkidle")`——但 HTML 用 Chart.js / Mermaid / Tailwind 全走 CDN，CDN heartbeat + 字体加载让 network 永远不 idle，60s 后 timeout。
+
+**正解**：
+```python
+await page.goto(f"file://{path}", wait_until="load", timeout=60000)
+await page.wait_for_timeout(3000)  # 给 Chart.js / Mermaid 一点渲染时间
+# 如果有 chart.js，可以等具体的 canvas 元素：
+await page.wait_for_selector("canvas", state="attached", timeout=10000)
+```
+
+**优先级**：
+- `load` — DOM + 图片 + 字体加载完即 OK（推荐 default）
+- `domcontentloaded` — 只等 DOM，最快但 chart 可能未渲染
+- `networkidle` — 用于 SPA 已知 network 会 idle 的场景，CDN-heavy 报告不要用
+
+---
+
+## ⚠️ 18. 仓库卫生：实验产物不入主仓库，保留入口文件
+
+来自 embodied_ai_2026 → xiongjjlj/embodied-ai-report 推送教训：
+
+**反例**：开发过程产出 7-8 个 PPT 实验文件（`generate_deck.py` v1 / v2、`html_to_pptx.py`、`embodied_ai_deck.pptx`、`section_pngs/` 几百张 PNG、`report_v2_backup.html`、`deck_outline.md`），若直接 `git add .` 全推上去——主仓库被实验垃圾污染。
+
+**正解 · 推送前 checklist**：
+
+1. **明确"交付物" vs "工作产物"**：
+   - 交付物：`report.html` / `FULL_REPORT.md` / `sections/` / `data/` → 推
+   - 工作产物：`generate_*.py` / `*.pptx` / `section_pngs/` / `*_backup.*` / `deck_outline.md` / `.DS_Store` → 不推
+   - 中间审计：`ADVERSARIAL_REVIEW.md` / `PIPELINE.md` / `SKILL_EVALUATION.md` → 看情况，作为"研究过程留痕"可以放，作为"内部 ERRATA"不放
+
+2. **保留远端入口**：远端可能已有 `index.html`（GitHub Pages redirect）/ README 等入口文件——`git clone` 后**先 inspect 远端有什么**，不要本地直接覆盖
+   ```bash
+   git clone <remote> /tmp/remote-check
+   ls /tmp/remote-check/   # 看远端有什么必须保留
+   # 然后选择性 cp，不要 rsync --delete
+   ```
+
+3. **commit 前 dry-run**：
+   ```bash
+   git status --short | head -30   # 看新增 / 修改 / 删除
+   git diff --stat <changed_file>  # 看每个文件改了多少行
+   # 异常大的 diff（如 report.html 改了 3000 行）要警觉是不是误格式化
+   ```
+
+4. **commit message 写"为什么"**：
+   - ❌ "Update report.html"
+   - ✅ "Fix HTML layout bug: missing </div> at line 332 caused grid collapse and single-char wrapping in summary sections"
+
+---
+
+## ⚠️ 19. 用户截图反馈的"症状 → 根因"映射表
+
+来自三轮用户视觉反馈累积：
+
+| 症状（用户截图） | 99% 是这个根因 | 排查命令 |
+|---|---|---|
+| 文字 0./.2/./3 单字换行 | grid / flex 容器破损（div 不闭合） | HTMLParser div balance |
+| 整页空白只有一行字 | section padding 或 height: 100vh 错误 | grep `100vh\|padding-top` |
+| 图表显示"Loading..."不出来 | Chart.js / Mermaid CDN 没加载 | 看 console，等 `wait_for_selector("canvas")` |
+| TOC 链接跳不到 | anchor id 和 href 不匹配 | grep `id="ch` vs `href="#ch` |
+| 不同 section 同字号但视觉大小不一 | container width 不同导致响应字号 | 看 `clamp() / vw` 单位 |
+| 一列变两列错位 | grid-cols-2 容器破损（同 #1） | 同 #1 |
+| 字看不清（低对比度） | 配色冲突，深底深字或浅底浅字 | 改 CSS variables，重审色板 |
+| 文字溢出卡片边缘 | 卡片 overflow 没设 / 字号过大 | `overflow: hidden` + 缩字号 |
+
+**操作纪律**：用户发截图 + 一句话反馈时，先对照这张表，不要直接动手——猜错根因等于二次破坏。

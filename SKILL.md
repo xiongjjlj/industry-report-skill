@@ -13,13 +13,14 @@ You are running a **5-phase universal industry research pipeline**. The most imp
 ## Phase 0 · Pre-flight (read before starting)
 
 Read these in order:
-1. `methodology/05_pitfalls.md` — **8 ironclad rules. Do not skip.**
+1. `methodology/05_pitfalls.md` — **19 ironclad rules. Do not skip.**
 2. `methodology/01_diagnose.md` — How to diagnose industry essence
 3. `methodology/02_chapter_modules.md` — Module library (16 modules)
 4. `methodology/03_information_sources.md` — Industry-specific source strategy
 5. `methodology/04_pipeline.md` — 5-phase execution detail
 6. `methodology/06_style_guide.md` — Writing conventions (mandatory)
 7. `methodology/07_critic_protocol.md` — Adversarial review protocol
+8. `methodology/08_delivery_hygiene.md` — HTML structural safety / PPT conversion / repo push discipline
 
 Then ask the user for:
 - Industry / topic
@@ -142,13 +143,27 @@ Build `data/references.json` + `data/data_points.json` from agent outputs. Every
 
 ---
 
-## ⚠️ THE 8 IRONCLAD RULES (from methodology/05_pitfalls.md)
+## ⚠️ THE 19 IRONCLAD RULES (from methodology/05_pitfalls.md)
 
+**Core 8 (always)**:
 1. **No template forcing** — Phase 1 diagnosis is the only basis for chapter selection
 2. **Industry essence > Framework** — Ask "what's the core matter?" before "what's the structure?"
 3. **Information sources > Inference** — ALWAYS search real public statements from top voices; never rely on training memory
 4. **PE deal tools belong in appendix** — IC memo, decision tree, portfolio allocation, Q&A → never in main body
 5. **Every number traceable** — Mark `[UNSOURCED]` / `[INFERRED]` / `[UNDISCLOSED]` when uncertain
-6. **Math twice** — Pricing formulas (× hours × days), revenue forecasts (vs TAM), DCF inputs—verify arithmetic
+6. **Math twice** — Pricing formulas, revenue forecasts (vs TAM), DCF inputs—verify arithmetic
 7. **Soften strong words** — 必然/稳态/全链垄断/世代级机会 → 大概率/当前格局/主导/历史级量级机会
 8. **Always run adversarial critic** — v1 → critic → fix; ERRATA is internal note, NOT a chapter
+
+**Extended (when relevant)**:
+9. **PE 报告是投资逻辑驱动，不是产业链全景图** — 上游材料压缩成一张表，不做独立章节
+10. **排版纪律：CSS 统管，禁 inline style** — h2/h3 间距由 CSS 单一管理
+11. **章节编号必须前后一致** — 重排时连带 sub-section 编号一起改
+12. **数字一致性审计** — TAM / CAGR / PSR / DCF 必须互相咬合
+13. **引语 attribution 必须 web-verify** — Critic 也会犯错，speaker / role / URL 全验证
+14. **Critic 循环的修订效率衰减** — Partial fix 是常态，必须逐行联动
+15. **HTML 结构完整性** — 禁用 `re.sub` 改 HTML，div balance 必跑
+16. **HTML 资产不要轻易转 PPT** — 已有 HTML 时走"HTML → PPT"路径，不重做
+17. **Playwright 用 `load` 不用 `networkidle`** — CDN-heavy 页面不可能 idle
+18. **仓库卫生** — 实验产物不入主仓库，clone 远端先看再 cp
+19. **用户截图症状 → 根因映射表** — 单字换行 = div 破损，不要去调 CSS
