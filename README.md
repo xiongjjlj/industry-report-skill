@@ -39,14 +39,22 @@ This skill encodes **8 ironclad rules** (see `methodology/05_pitfalls.md`) born 
 ### On a new machine
 
 ```bash
-# 1. Clone the skill
-git clone <this-repo-url> ~/.claude/skills/industry-report
-
-# 2. (Optional) symlink the example if you want to keep it visible
-ln -s ~/.claude/skills/industry-report/examples ./industry-report-examples
+# Clone the skill into ~/.claude/skills/ (note: target dir must be "industry-report",
+# matching the `name:` field in SKILL.md, NOT the repo name "industry-report-skill")
+git clone https://github.com/xiongjjlj/industry-report-skill.git ~/.claude/skills/industry-report
 ```
 
-That's it. Claude Code automatically picks up skills in `~/.claude/skills/`.
+That's it. Claude Code automatically picks up skills in `~/.claude/skills/` at startup.
+
+### On a machine where you develop the skill (e.g. this Mac)
+
+Keep working copy under `~/Downloads/...` for easy git push/pull, and symlink it into the skills dir so Claude Code can see it:
+
+```bash
+ln -s /path/to/your/working/industry-report-skill ~/.claude/skills/industry-report
+```
+
+This way: edit in `~/Downloads/`, `git commit && git push`, no `cp` needed — Claude Code reads through the symlink.
 
 ### Verify install
 
